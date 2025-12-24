@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Threadedminds.dev</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/styles/main.css" />
+    <script defer src="https://threadedminds-umami.fly.dev/script.js" data-website-id="dcd76c73-ec69-4e45-8ca3-22ae7798086b"></script>
+    <script src="/scripts/main.js" defer></script>
+  </head>
+  <body>
+    <div class="page">
+      <div class="shell">
+        <header class="top-bar">
+          <div class="logo-box">
+            <span>Logo?</span>
+          </div>
+          <div class="title-block">
+            <div class="title-row">
+              <div>
+                <h1>Threadedminds.dev</h1>
+                <div class="subtitle">
+                  logs, fragments &amp; hauntware-adjacent thoughts
+                </div>
+              </div>
+              <div class="theme-switcher">
+                <span>Theme</span>
+                <select id="themeSelect" aria-label="Choose theme">
+                  <option value="dark">Dark</option>
+                  <option value="light">Light</option>
+                  <option value="terminal">Terminal</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <div class="layout">
+          <nav class="sidebar" aria-label="About navigation">
+            <ul>
+              <li><a href="/about/#who">Who</a></li>
+              <li><a href="/about/#what">What</a></li>
+              <li><a href="/about/#when">When</a></li>
+              <li><a href="/about/#where">Where</a></li>
+              <li><a href="/about/#why">Why</a></li>
+            </ul>
+
+            <div class="sidebar-extra">
+              <a href="/about/how-it-started.html">How it started</a>
+              <a href="/about/how-its-going.html">How it's going</a>
+            </div>
+          </nav>
+
+          <div class="main-column">
+            <section class="filters" aria-label="Log filters">
+              <div class="filter-row">
+                <span class="filter-label">Tag filter</span>
+
+                <label class="chip">
+                  <input type="checkbox" class="filter-checkbox" data-key="aichat" checked />
+                  <span>aichat</span>
+                </label>
+
+                <label class="chip">
+                  <input type="checkbox" class="filter-checkbox" data-key="mentalhealth" checked />
+                  <span>mentalhealth</span>
+                </label>
+
+                <label class="chip">
+                  <input type="checkbox" class="filter-checkbox" data-key="sobriety" checked />
+                  <span>sobriety</span>
+                </label>
+
+                <label class="chip">
+                  <input type="checkbox" class="filter-checkbox" data-key="catdad" checked />
+                  <span>catdad</span>
+                </label>
+
+                <label class="chip">
+                  <input type="checkbox" class="filter-checkbox" data-key="story" checked />
+                  <span>story</span>
+                </label>
+
+                <label class="chip">
+                  <input type="checkbox" class="filter-checkbox" data-key="creative" checked />
+                  <span>creative</span>
+                </label>
+
+                <label class="chip">
+                  <input type="checkbox" class="filter-checkbox" data-key="concept" checked />
+                  <span>concept</span>
+                </label>
+              </div>
+
+              <div class="filter-row type-row">
+                <span class="chip--group-label">Mode</span>
+
+                <label class="chip chip--type">
+                  <input type="checkbox" class="filter-checkbox" data-key="core" checked />
+                  <span>core</span>
+                </label>
+
+                <label class="chip chip--type">
+                  <input type="checkbox" class="filter-checkbox" data-key="slice" checked />
+                  <span>slice</span>
+                </label>
+
+                <label class="chip chip--type">
+                  <input type="checkbox" class="filter-checkbox" data-key="ambient" checked />
+                  <span>ambient</span>
+                </label>
+
+                <label class="chip chip--type">
+                  <input type="checkbox" class="filter-checkbox" data-key="checkpoint" checked />
+                  <span>checkpoint</span>
+                </label>
+
+                <label class="chip chip--type">
+                  <input type="checkbox" class="filter-checkbox" data-key="crux" checked />
+                  <span>crux</span>
+                </label>
+
+                <label class="chip chip--type">
+                  <input type="checkbox" class="filter-checkbox" data-key="misc" checked />
+                  <span>misc</span>
+                </label>
+              </div>
+            </section>
+
+            <section id="latest-post" class="latest-card" aria-label="Latest post">
+              <div class="latest-tag">Latest post</div>
+              <h2 class="latest-title">Placeholder title for newest log</h2>
+              <div class="latest-meta">
+                <span>2025-07-02</span> ·
+                <span>aichat · mentalhealth · core</span>
+              </div>
+
+<div id="latestBody" class="latest-body collapsed">
+  <section class="welcome">
+    <p>
+      <strong>Prologue is live while the archive updates.</strong>
+    </p>
+
+    <p>
+      While the main logs are being organized, you can browse the early entries here:
+      <a href="/logs/prologue/">/logs/prologue/</a>
+    </p>
+
+    <details class="news-accordion">
+      <summary>Prologue explanation</summary>
+      <div class="news-accordion-body">
+        <p>
+          The prologue exists because the earliest saved conversations weren’t originally kept as full,
+          chronological logs. They were highlights—snapshots—saved before the archive structure existed.
+        </p>
+        <p>
+          Rather than rewrite history, they live here as a separate layer: early context, early tone,
+          and a few foundational threads, preserved as-is.
+        </p>
+      </div>
+    </details>
+
+    <p class="note">
+      More will connect here later.
+    </p>
+  </section>
+</div>
+
+
+              <button id="expandBtn" class="expand-btn" aria-expanded="false">
+                click to expand down
+              </button>
+            </section>
+
+            <div class="footer-note">
+              Filters &amp; theme are remembered locally in your browser only.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

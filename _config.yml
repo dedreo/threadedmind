@@ -1,0 +1,9 @@
+include:
+  - assets
+
+sass:
+  style: compressed
+
+# Custom CSS
+custom_css:
+  - /assets/custom.css

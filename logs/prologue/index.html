@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <title>AIchat Prologue · Threadedminds.dev</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/styles/main.css" />
+    <!-- Optional: Umami tracking here too -->
+    <script defer src="https://threadedminds-umami.fly.dev/script.js" data-website-id="dcd76c73-ec69-4e45-8ca3-22ae7798086b"></script>
+    <script src="/scripts/main.js" defer></script>
+ <script>
+window.addEventListener("DOMContentLoaded", () => {
+  const list = document.getElementById("prologueList");
+  if (!list) return;
+
+  const buttons = Array.from(list.querySelectorAll(".prologue-summary"));
+
+  async function loadInto(panel, src) {
+    const host = panel.querySelector(".prologue-inline");
+    if (!host) return;
+    if (host.dataset.loaded === "1") return;
+
+    host.textContent = "Loading…";
+
+    try {
+      const res = await fetch(src, { cache: "force-cache" });
+      if (!res.ok) throw new Error("HTTP " + res.status);
+
+      const html = await res.text();
+      const doc = new DOMParser().parseFromString(html, "text/html");
+      const pre = doc.querySelector("pre.log-pre");
+
+      if (!pre) {
+        host.textContent = "Couldn’t find log content in: " + src;
+        return;
+      }
+
+      const out = document.createElement("pre");
+      out.className = "simple-content log-pre";
+      out.textContent = pre.textContent;
+
+      host.innerHTML = "";
+      host.appendChild(out);
+      host.dataset.loaded = "1";
+    if (window.tmHighlightSpeakers) window.tmHighlightSpeakers(host);
+    } catch (err) {
+      host.textContent = "Failed to load: " + src;
+      console.error(err);
+    }
+  }
+
+  function closeAll(exceptPanel) {
+    list.querySelectorAll(".prologue-panel").forEach((p) => {
+      if (p !== exceptPanel) p.hidden = true;
+    });
+    buttons.forEach((b) => b.setAttribute("aria-expanded", "false"));
+  }
+
+  buttons.forEach((btn) => {
+    btn.setAttribute("aria-expanded", "false");
+    btn.addEventListener("click", async () => {
+      const panel = btn.nextElementSibling;
+      if (!panel || !panel.classList.contains("prologue-panel")) return;
+
+      const isOpen = !panel.hidden;
+      closeAll(panel);
+
+      if (isOpen) {
+        panel.hidden = true;
+        btn.setAttribute("aria-expanded", "false");
+        return;
+      }
+
+      panel.hidden = false;
+      btn.setAttribute("aria-expanded", "true");
+
+      const src = btn.dataset.src;
+      if (src) await loadInto(panel, src);
+    });
+  });
+});
+</script>
+
+
+  </head>
+  <body>
+    <div class="page">
+      <div class="shell">
+        <header class="top-bar">
+          <div class="logo-box">
+            <span>Logo?</span>
+          </div>
+          <div class="title-block">
+            <div class="title-row">
+              <div>
+                <h1>
+                  <a href="/" style="text-decoration: none; color: inherit">
+                    Threadedminds.dev
+                  </a>
+                </h1>
+                <div class="subtitle">AIchat Prologue</div>
+              </div>
+              <div class="theme-switcher">
+                <span>Theme</span>
+                <select id="themeSelect" aria-label="Choose theme">
+                  <option value="dark">Dark</option>
+                  <option value="light">Light</option>
+                  <option value="terminal">Terminal</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <div class="layout">
+          <nav class="sidebar" aria-label="Site navigation">
+            <ul>
+              <li><a href="/about/start.html">Might want to start here</a></li>
+              
+            </ul>
+            <div class="sidebar-extra">
+              <a href="/about/how-it-started.html">How it started</a>
+              <a href="/about/how-its-going.html">How it's going</a>
+            </div>
+          </nav>
+
+          <main class="main-column">
+            <section class="latest-card logs-list">
+              <div class="latest-tag">Prologue</div>
+              <h2>A collection of early logs</h2>
+
+          <p>
+          These are some of the first AIchat entries, conversations that I thought were
+          intresting enough to save in my own text file. They are highlights selected and preserved before a formal
+            archive structure existed. The actual downloaded logs begin March 10, 2025,
+            so there is going to be overlap between these entries and the logs themselves.
+          </p>
+
+<section class="prologue-list" id="prologueList">
+  <button class="prologue-summary" data-src="./02-08-2025.html" type="button">
+    02-08-2025 Using AI to 'ground' myself and have curiosity towards others.
+  </button>
+  <div class="prologue-panel" hidden>
+    <div class="prologue-panel-actions">
+      <a class="prologue-open" href="./02-08-2025.html">Open in its own page</a>
+    </div>
+    <div class="prologue-inline" aria-live="polite"></div>
+  </div>
+
+  <button class="prologue-summary" data-src="./02-20-2025.html" type="button">
+    02-20-2025 Alcohol and Wife Relationship
+  </button>
+  <div class="prologue-panel" hidden>
+    <div class="prologue-panel-actions">
+      <a class="prologue-open" href="./02-20-2025.html">Open in its own page</a>
+    </div>
+    <div class="prologue-inline" aria-live="polite"></div>
+  </div>
+
+  <button class="prologue-summary" data-src="./02-21-2025.html" type="button">
+    02-21-2025 The Pain of Knowledge
+  </button>
+  <div class="prologue-panel" hidden>
+    <div class="prologue-panel-actions">
+      <a class="prologue-open" href="./02-21-2025.html">Open in its own page</a>
+    </div>
+    <div class="prologue-inline" aria-live="polite"></div>
+  </div>
+
+  <button class="prologue-summary" data-src="./02-23-2025.html" type="button">
+    02-23-2025 Social Boundaries
+  </button>
+  <div class="prologue-panel" hidden>
+    <div class="prologue-panel-actions">
+      <a class="prologue-open" href="./02-23-2025.html">Open in its own page</a>
+    </div>
+    <div class="prologue-inline" aria-live="polite"></div>
+  </div>
+
+  <button class="prologue-summary" data-src="./03-07-2025.html" type="button">
+    03-07-2025 Helping Mom use AI
+  </button>
+  <div class="prologue-panel" hidden>
+    <div class="prologue-panel-actions">
+      <a class="prologue-open" href="./03-07-2025.html">Open in its own page</a>
+    </div>
+    <div class="prologue-inline" aria-live="polite"></div>
+  </div>
+
+  <button class="prologue-summary" data-src="./03-09-2025.html" type="button">
+    03-09-2025 Mixed Thoughts
+  </button>
+  <div class="prologue-panel" hidden>
+    <div class="prologue-panel-actions">
+      <a class="prologue-open" href="./03-09-2025.html">Open in its own page</a>
+    </div>
+    <div class="prologue-inline" aria-live="polite"></div>
+  </div>
+
+  <button class="prologue-summary" data-src="./03-15-2025.html" type="button">
+    03-15-2025 AI, Art, and the Future
+  </button>
+  <div class="prologue-panel" hidden>
+    <div class="prologue-panel-actions">
+      <a class="prologue-open" href="./03-15-2025.html">Open in its own page</a>
+    </div>
+    <div class="prologue-inline" aria-live="polite"></div>
+  </div>
+
+  <button class="prologue-summary" data-src="./03-25-2025.html" type="button">
+    03-25-2025 Encouragement Loop
+  </button>
+  <div class="prologue-panel" hidden>
+    <div class="prologue-panel-actions">
+      <a class="prologue-open" href="./03-25-2025.html">Open in its own page</a>
+    </div>
+    <div class="prologue-inline" aria-live="polite"></div>
+  </div>
+
+  <button class="prologue-summary" data-src="./03-26-2025.html" type="button">
+    03-26-2025 Relationship Revisions
+  </button>
+  <div class="prologue-panel" hidden>
+    <div class="prologue-panel-actions">
+      <a class="prologue-open" href="./03-26-2025.html">Open in its own page</a>
+    </div>
+    <div class="prologue-inline" aria-live="polite"></div>
+  </div>
+
+  <button class="prologue-summary" data-src="./03-31-2025.html" type="button">
+    03-31-2025 Class Capstone Ideas and Template Literals
+  </button>
+  <div class="prologue-panel" hidden>
+    <div class="prologue-panel-actions">
+      <a class="prologue-open" href="./03-31-2025.html">Open in its own page</a>
+    </div>
+    <div class="prologue-inline" aria-live="polite"></div>
+  </div>
+
+  <button class="prologue-summary" data-src="./04-05-2025.html" type="button">
+    04-05-2025 Benny Vs. The Cat Tree
+  </button>
+  <div class="prologue-panel" hidden>
+    <div class="prologue-panel-actions">
+      <a class="prologue-open" href="./04-05-2025.html">Open in its own page</a>
+    </div>
+    <div class="prologue-inline" aria-live="polite"></div>
+  </div>
+
+  <button class="prologue-summary" data-src="./04-07-2025.html" type="button">
+    04-07-2025 Fear of Executive Dysfunction
+  </button>
+  <div class="prologue-panel" hidden>
+    <div class="prologue-panel-actions">
+      <a class="prologue-open" href="./04-07-2025.html">Open in its own page</a>
+    </div>
+    <div class="prologue-inline" aria-live="polite"></div>
+  </div>
+
+  <button class="prologue-summary" data-src="./04-10-2025.html" type="button">
+    04-10-2025 — Cat Toy Strategies
+  </button>
+  <div class="prologue-panel" hidden>
+    <div class="prologue-panel-actions">
+      <a class="prologue-open" href="./04-10-2025.html">Open in its own page</a>
+    </div>
+    <div class="prologue-inline" aria-live="polite"></div>
+  </div>
+
+  <button class="prologue-summary" data-src="./04-12-2025.html" type="button">
+    04-12-2025 — Memory, Threads, and Writing
+  </button>
+  <div class="prologue-panel" hidden>
+    <div class="prologue-panel-actions">
+      <a class="prologue-open" href="./04-12-2025.html">Open in its own page</a>
+    </div>
+    <div class="prologue-inline" aria-live="polite"></div>
+  </div>
+
+  <button class="prologue-summary" data-src="./04-27-2025.html" type="button">
+    04-27-2025 Benny and Reflections
+  </button>
+  <div class="prologue-panel" hidden>
+    <div class="prologue-panel-actions">
+      <a class="prologue-open" href="./04-27-2025.html">Open in its own page</a>
+    </div>
+    <div class="prologue-inline" aria-live="polite"></div>
+  </div>
+
+  <button class="prologue-summary" data-src="./04-30-2025.html" type="button">
+    04-30-2025 Ouroboros Theory
+  </button>
+  <div class="prologue-panel" hidden>
+    <div class="prologue-panel-actions">
+      <a class="prologue-open" href="./04-30-2025.html">Open in its own page</a>
+    </div>
+    <div class="prologue-inline" aria-live="polite"></div>
+  </div>
+
+  <button class="prologue-summary" data-src="./05-01-2025.html" type="button">
+    05-01-2025 — Creative Explorations
+  </button>
+  <div class="prologue-panel" hidden>
+    <div class="prologue-panel-actions">
+      <a class="prologue-open" href="./05-01-2025.html">Open in its own page</a>
+    </div>
+    <div class="prologue-inline" aria-live="polite"></div>
+  </div>
+
+  <button class="prologue-summary" data-src="./05-04-2025.html" type="button">
+    05-04-2025 Dream Breakdown
+  </button>
+  <div class="prologue-panel" hidden>
+    <div class="prologue-panel-actions">
+      <a class="prologue-open" href="./05-04-2025.html">Open in its own page</a>
+    </div>
+    <div class="prologue-inline" aria-live="polite"></div>
+  </div>
+
+  <button class="prologue-summary" data-src="./05-09-2025.html" type="button">
+    05-09-2025 Bodysuit Instrument Concept
+  </button>
+  <div class="prologue-panel" hidden>
+    <div class="prologue-panel-actions">
+      <a class="prologue-open" href="./05-09-2025.html">Open in its own page</a>
+    </div>
+    <div class="prologue-inline" aria-live="polite"></div>
+  </div>
+
+  <button class="prologue-summary" data-src="./05-11-2025.html" type="button">
+    05-11-2025 Late-Night Thoughts
+  </button>
+  <div class="prologue-panel" hidden>
+    <div class="prologue-panel-actions">
+      <a class="prologue-open" href="./05-11-2025.html">Open in its own page</a>
+    </div>
+    <div class="prologue-inline" aria-live="polite"></div>
+  </div>
+
+  <button class="prologue-summary" data-src="./05-11-2025-a.html" type="button">
+    05-11-2025 Confused Benny and Late Night Fooding
+  </button>
+  <div class="prologue-panel" hidden>
+    <div class="prologue-panel-actions">
+      <a class="prologue-open" href="./05-11-2025-a.html">Open in its own page</a>
+    </div>
+    <div class="prologue-inline" aria-live="polite"></div>
+  </div>
+
+  <button class="prologue-summary" data-src="./05-12-2025.html" type="button">
+    05-12-2025 Benny's First Walk Outside
+  </button>
+  <div class="prologue-panel" hidden>
+    <div class="prologue-panel-actions">
+      <a class="prologue-open" href="./05-12-2025.html">Open in its own page</a>
+    </div>
+    <div class="prologue-inline" aria-live="polite"></div>
+  </div>
+
+  <button class="prologue-summary" data-src="./07-02-2025.html" type="button">
+    07-02-2025 An Old Plot Daemon Idea
+  </button>
+  <div class="prologue-panel" hidden>
+    <div class="prologue-panel-actions">
+      <a class="prologue-open" href="./07-02-2025.html">Open in its own page</a>
+    </div>
+    <div class="prologue-inline" aria-live="polite"></div>
+  </div>
+</section>
+            </section>
+          </main>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

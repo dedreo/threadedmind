@@ -1,0 +1,66 @@
+{
+  "rules": [
+    { "type": "word", "from": "Jerry", "to": "Leo" },
+    { "type": "phrase", "from": "Jerry Hardin", "to": "Leo" },
+    { "type": "word", "from": "Hardin", "to": "Leo" },
+
+    { "type": "word_ci", "from": "Psy", "to": "Sly" },
+
+    { "type": "word", "from": "Mom", "to": "Jolene" },
+
+    { "type": "word", "from": "Anthony", "to": "Zuko" },
+    { "type": "word", "from": "Shawn", "to": "Calvin" },
+
+    { "type": "phrase", "from": "Michelle from Illinois", "to": "Marin from Illinois" },
+    { "type": "word", "from": "Michelle", "to": "Marin" },
+
+    { "type": "word", "from": "Kat", "to": "Tess" },
+    { "type": "word", "from": "Kitty", "to": "Aria" },
+
+    { "type": "word", "from": "Darlene", "to": "Bernice" },
+    { "type": "word", "from": "Candis", "to": "Jessie" },
+    { "type": "word", "from": "Bekah", "to": "Sarah" },
+    { "type": "word", "from": "Dustin", "to": "Hayden" },
+    { "type": "word", "from": "Amy", "to": "Ann" },
+    { "type": "word", "from": "Billy", "to": "Gavin" },
+    { "type": "word_ci", "from": "Richard", "to": "Dick" },
+    { "type": "word_ci", "from": "Rosetta", "to": "Marne" },
+    { "type": "word_ci", "from": "Phil", "to": "Tony" },
+
+
+
+    { "type": "word", "from": "Dedre", "to": "Anzio" },
+    { "type": "word", "from": "Dedreo", "to": "Anzio" },
+
+    { "type": "phrase", "from": "Veteran's Treatment Court", "to": "VTC" },
+    { "type": "phrase", "from": "Veterans Treatment Court", "to": "VTC" },
+    { "type": "word", "from": "VTC", "to": "VTC" },
+
+    { "type": "word", "from": "Murfreesboro", "to": "xxx" },
+    { "type": "regex", "pattern": "(?<!\\w)'boro(?!\\w)", "to": "xxx" },
+    { "type": "word", "from": "Dowelltown", "to": "xxx" },
+    { "type": "word", "from": "Watertown", "to": "xxx" },
+    { "type": "word", "from": "McMinnville", "to": "xxx" },
+    { "type": "word", "from": "DeKalb", "to": "xxx" },
+    { "type": "word", "from": "Rutherford", "to": "xxx" },
+    { "type": "word", "from": "Vincennes", "to": "xxx" },
+
+    { "type": "word", "from": "MTSU", "to": "xxx" },
+    { "type": "word", "from": "Adient", "to": "xxx" },
+    { "type": "word", "from": "Nissan", "to": "xxx" },
+
+    { "type": "phrase", "from": "Alicia Morotti", "to": "Felicity" },
+    { "type": "phrase", "from": "Justin Arnold", "to": "J." },
+
+    { "type": "word", "from": "Scar", "to": "xxx" },
+    { "type": "word", "from": "Elana", "to": "Sly" },
+    { "type": "word", "from": "Panda", "to": "xxx" },
+    { "type": "word", "from": "Amanda", "to": "xxx" },
+    { "type": "word", "from": "Kenneth", "to": "Bob" },
+    { "type": "word", "from": "Jared", "to": "Danny" },
+
+    { "type": "word", "from": "Jay", "to": "Leo" }
+  ],
+  "targets": ["logs"],
+  "extensions": [".md", ".html", ".txt"]
+}
