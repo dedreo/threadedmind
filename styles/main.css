@@ -617,6 +617,67 @@ h1 {
   font-size:.9rem;
 }
 
+.about-content {
+  max-width: 65ch;
+  padding-bottom: 4rem;
+}
+
+.about-content h1 {
+  margin-bottom: 1.5rem;
+}
+
+.about-content section {
+  margin-bottom: 2.5rem;
+}
+
+.about-content {
+  max-width: 70ch;
+  padding: 1.25rem 0 4rem;
+}
+
+.about-content p {
+  line-height: 1.65;
+  margin: 0 0 1.1rem;
+}
+
+.about-content h1 {
+  margin: 0 0 1.25rem;
+  text-transform: lowercase; /* if you want the vibe */
+}
+
+.about-content h2 {
+  margin: 2rem 0 0.75rem;
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.about-content code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.95em;
+}
+
+.about-content ul {
+  margin: 0.5rem 0 0;
+  padding-left: 1.25rem;
+}
+
+.about-content li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+  /* Media / figures */
+.media {
+  max-width: 900px;
+  margin: 1.5rem auto; /* centers it nicely */
+}
+
+.media img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px; /* optional, matches your UI */
+}
 
 /* RESPONSIVE */
 

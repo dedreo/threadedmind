@@ -28,6 +28,31 @@
     });
   }
 
+  async function loadSidebar() {
+  const host = document.getElementById("tmSidebar");
+  if (!host) return;
+
+  // Find the script tag that loaded main.js
+  const scriptEl = document.querySelector('script[src$="/scripts/main.js"], script[src*="/scripts/main.js?"]');
+  const scriptSrc = scriptEl ? scriptEl.src : new URL("/scripts/main.js", window.location.href).href;
+
+  const scriptUrl = new URL(scriptSrc, window.location.href);
+  const basePath = scriptUrl.pathname.replace(/\/scripts\/main\.js$/, "");
+
+  const sidebarUrl = `${basePath}/partials/sidebar.html`;
+
+  try {
+    const res = await fetch(sidebarUrl);
+    if (!res.ok) throw new Error(`Sidebar fetch failed: ${res.status}`);
+    host.innerHTML = await res.text();
+  } catch (e) {
+    console.error("Sidebar error:", e);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", loadSidebar);
+
+
   // FILTER CHECKBOXES (HOME PAGE)
   const filterBoxes = Array.from(
     document.querySelectorAll(".filter-checkbox")
