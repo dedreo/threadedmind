@@ -727,3 +727,19 @@ h1 {
     text-align: left;
   }
 }
+
+/* Style for "You said:" */
+p strong:contains("You said:"),
+p em:contains("You said:"),
+p:contains("You said:") {
+    color: #5DA7E9; /* a readable blue */
+    font-weight: 600;
+}
+
+/* Style for "ChatGPT said:" */
+p strong:contains("ChatGPT said:"),
+p em:contains("ChatGPT said:"),
+p:contains("ChatGPT said:") {
+    color: #C568FF; /* lilac/purple */
+    font-weight: 600;
+}
