@@ -188,7 +188,8 @@ h1 {
   height: fit-content;
 }
 
-/* 5-W pyramid layout on desktop */
+/* layout on desktop */
+
 .sidebar ul {
   list-style: none;
   margin: 0 0 20px 0;
@@ -198,17 +199,6 @@ h1 {
   grid-template-columns: repeat(3, max-content);
   column-gap: 12px;
   row-gap: 4px;
-}
-
-.sidebar ul li:nth-child(1) { grid-column: 1; } /* Who  */
-.sidebar ul li:nth-child(2) { grid-column: 2; } /* What */
-.sidebar ul li:nth-child(3) { grid-column: 3; } /* When */
-.sidebar ul li:nth-child(4) { grid-column: 2; } /* Where */
-.sidebar ul li:nth-child(5) { grid-column: 3; } /* Why   */
-
-/* grid handles vertical spacing, so remove li gap */
-.sidebar li + li {
-  margin-top: 0;
 }
 
 .sidebar a {
@@ -336,6 +326,26 @@ h1 {
 }
 
 /* LATEST POST CARD */
+
+.latest-card.origin-snapshot {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.origin-snapshot .media img {
+  max-height: 60vh;
+  object-fit: contain;
+}
+
+.origin-snapshot .simple-content {
+  font-size: 0.85rem;
+  opacity: 0.92;
+}
+
+.origin-snapshot .media {
+  margin-top: 1rem;
+}
+
 
 .latest-card {
   box-sizing: border-box;

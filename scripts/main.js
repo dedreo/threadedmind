@@ -88,15 +88,6 @@ document.addEventListener("DOMContentLoaded", loadSidebar);
 
   // LATEST POST EXPAND/COLLAPSE (HOME)
   const latestBody = document.getElementById("latestBody");
-  const expandBtn = document.getElementById("expandBtn");
-
-  if (latestBody && expandBtn) {
-    expandBtn.addEventListener("click", () => {
-      const collapsed = latestBody.classList.toggle("collapsed");
-      expandBtn.textContent = collapsed ? "click to expand down" : "collapse";
-      expandBtn.setAttribute("aria-expanded", String(!collapsed));
-    });
-  }
   
 function tmHighlightSpeakers(rootEl = document) {
   const logPres = rootEl.querySelectorAll(".log-pre");
