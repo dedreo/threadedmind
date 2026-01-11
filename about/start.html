@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <title>About · Mychatwithmychat.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="/styles/main.css" />
+    <script src="/scripts/main.js" defer></script>
+  </head>
+
+  <body>
+    <div class="page">
+      <div class="shell">
+
+        <!-- Top bar -->
+        <header class="top-bar">
+          <div class="logo-box">
+            <span>Logo?</span>
+          </div>
+
+          <div class="title-block">
+            <div class="title-row">
+              <div>
+                <h1>
+                  <a href="/" style="text-decoration: none; color: inherit;">
+                    My chat with mychat
+                  </a>
+                </h1>
+                <div class="subtitle">About</div>
+              </div>
+
+              <div class="theme-switcher">
+                <span>Theme</span>
+                <select id="themeSelect" aria-label="Choose theme">
+                  <option value="dark">Dark</option>
+                  <option value="light">Light</option>
+                  <option value="terminal">Terminal</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- Layout -->
+        <div class="layout">
+
+          <!-- Sidebar -->
+          <div id="tmSidebar"></div>
+          <!-- Main content -->
+          <main class="main-column">
+<article class="about-content">
+
+<h2>Site Information</h2>
+
+<section id="what">
+  <p>
+    This site is a curated archive of real conversations with a large language model.
+    It’s not a guide, a product demo, or a manifesto. The goal is simple: preserve what
+    was actually said, while trimming obvious noise and removing identifying details.
+  </p>
+
+  <p>
+    It records what happens when a person thinks alongside a machine over months,
+    and how that interaction gradually shifts in tone, use, and intent.
+  </p>
+</section>
+
+<section id="how-to-read">
+  <h2>How to read it</h2>
+
+  <p>
+    It starts with the prologues. After roughly the first year of recorded use,
+    the logs begin to appear, with the newest entry shown on the front page.
+    A local tag system can be used to bypass topics a reader may not want to engage with.
+  </p>
+
+  <ul>
+    <li><strong>Prologue</strong> — early highlights saved manually before a formal archive existed. (This is the only part available at present.)</li>
+    <li><strong>Logs</strong> — later, fuller records pulled from official archive downloads and organized by date.</li>
+    <li><strong>Tags</strong> — appear at the <em>end</em> of entries (metadata, not a teaser).</li>
+  </ul>
+
+  <p>
+    You can read chronologically, jump by tag, or treat entries as standalone.
+    There’s no correct order.
+  </p>
+</section>
+
+<section id="tag-guide">
+  <h2>Tag guide (optional)</h2>
+
+  <details class="tag-explainer">
+    <summary>Show tag explanations</summary>
+
+    <h3>Plot / topic</h3>
+    <ul>
+      <li><strong>#aichat</strong> — General LLM/AI usage, meta, and interaction patterns.</li>
+      <li><strong>#mentalhealth</strong> — Mood, coping, therapy, medication, etc. (not advice).</li>
+      <li><strong>#sobriety</strong> — Recovery and alcohol-related context.</li>
+      <li><strong>#concept</strong> — Idea exploration, frameworks, planning, “what if” threads.</li>
+      <li><strong>#creative</strong> — Writing/brainstorming/creative exploration outside strict “story.”</li>
+      <li><strong>#catdad</strong> — Benny / pet life / domestic moments involving the cat.</li>
+      <li><strong>#story</strong> — Narrative/worldbuilding as the primary activity.</li>
+      <li><strong>#coding-spiral</strong> — Long technical threads, including loops/retries/detours.</li>
+      <li><strong>#nerdlore</strong> — Games/media/culture talk for its own sake.</li>
+      <li><strong>#ego-loop</strong> — Self-referential reflection / reinforcement loops.</li>
+      <li><strong>#ambient-media</strong> — Image/meme-heavy stretches that are texture-first, low progression.</li>
+    </ul>
+
+    <h3>Depth / weight</h3>
+    <ul>
+      <li><strong>#core</strong> — Central / defining entries.</li>
+      <li><strong>#crux</strong> — A turning point or hinge moment.</li>
+      <li><strong>#checkpoint</strong> — Status snapshot / “where things stood” at the time.</li>
+      <li><strong>#ambient</strong> — Day-to-day presence; meaning is implicit, not extracted.</li>
+      <li><strong>#slice</strong> — A self-contained cut that reads well standalone.</li>
+      <li><strong>#misc</strong> — Doesn’t fit elsewhere. Hopefully stays a rare tag.</li>
+    </ul>
+
+    <p class="note">
+      Tags are for navigation, not judgment. They appear at the end of entries to avoid “teasing” content.
+    </p>
+  </details>
+</section>
+
+<section id="ai-note">
+  <h2>On AI, plainly</h2>
+
+  <p>
+    This site does not claim, imply, or suggest that the system involved is conscious,
+    sentient, emotional, or capable of independent thought.
+  </p>
+
+  <p>
+    A large language model generates text by predicting patterns in language.
+    Any appearance of personality, intent, or understanding is a byproduct of that process,
+    shaped by prompts, context, and human interpretation.
+  </p>
+
+  <p>
+    The conversations archived here reflect how a person used the tool over time, not what the tool is.
+    The meaning is in the interaction, not in the machine.
+  </p>
+
+  <p>
+    Nothing on this site should be read as medical, psychological, or life advice,
+    nor as an endorsement of AI as a replacement for human relationships or care.
+  </p>
+
+  <p>
+    Throughout this site, “AI” and “LLM” are used interchangeably for readability. 
+    Where precision matters, “LLM” is the more accurate term.
+  </p>
+</section>
+
+
+
+  <section id="editing">
+    <h2>Editing policy</h2>
+
+    <p>
+      The archive is edited for privacy and readability, not for narrative.
+    </p>
+
+    <ul>
+      <li>Identifying details may be anonymized (names, exact locations, file paths, etc.).</li>
+      <li>Obvious duplication may be removed (repeat or irrelevant code blocks, copy/paste retries, dead-end loops).</li>
+      <li>Minor typos may be corrected when they break readability or invert meaning.</li>
+      <li>Structure may be adjusted lightly (speaker labels, tag placement, consistent formatting).</li>
+    </ul>
+
+    <p>
+      The point is fidelity to experience without unnecessary exposure.
+    </p>
+  </section>
+
+  <section id="notation">
+    <h2>Notation</h2>
+
+    <ul>
+      <li>
+        <code>((v))</code> — the original input was spoken (voice-to-text). Light cleanup for coherence, not rewriting.
+      </li>
+      <li>
+        <code>(( ... ))</code> — editorial clarifications or replacements.
+      </li>
+      <li>
+        <code>[[ ... ]]</code> — internal editing anchors. These should not appear in the public site.
+      </li>
+    </ul>
+  </section>
+
+  <section id="content-note">
+    <h2>Content note</h2>
+    <p>
+      Some entries include mental health, addiction recovery, and relationship fallout.
+      Nothing is presented as advice; it’s just part of the record.
+    </p>
+  </section>
+
+</article>
+
+
+          </main>
+
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

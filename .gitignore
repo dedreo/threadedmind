@@ -1,0 +1,10 @@
+# --- WORK AREA: parsed_user_logs (never publish raw) ---
+parsed_user_logs/**
+!parsed_user_logs/tools/**
+!parsed_user_logs/tools/**/*
+parsed_user_logs/**/Original Splits/**
+
+# If you ever generate HTML output locally, keep it ignored too
+parsed_user_logs/**/out/**
+parsed_user_logs/**/dist/**
+parsed_user_logs/**/build/**
