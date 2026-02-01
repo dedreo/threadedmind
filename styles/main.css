@@ -261,6 +261,17 @@ h1 {
   opacity: 1;
 }
 
+.site-home-link {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.site-home-link:hover {
+  opacity: 0.95; /* subtle affordance */
+}
 
 /* FILTERS PANEL */
 
@@ -428,6 +439,85 @@ h1 {
   pointer-events: none;
 }
 
+/* GENERIC PAGE CARD (for About/Static pages) */
+.page-card {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: clamp(760px, 72vw, 980px);
+  margin-block-start: 2px;
+  margin-inline: auto;
+  padding: 14px 14px 12px;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  background: linear-gradient(
+    145deg,
+    var(--bg-soft),
+    rgba(15, 23, 42, 0.85)
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+/* Make about content use the full card width */
+.page-card .about-content {
+  max-width: none;
+  width: 100%;
+  margin: 0;
+}
+
+
+/* ABOUT / PROSE (unified) */
+.about-content {
+  /* let the card control width; don't clamp text */
+  max-width: none;
+  width: 100%;
+  margin: 0;
+  padding: 0 0 2.5rem;
+
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.about-content p {
+  margin: 0.75rem 0;
+  opacity: 0.92;
+}
+
+.about-content h1 {
+  margin: 0 0 1rem;
+  text-transform: lowercase; /* keep if you want */
+  letter-spacing: 0.02em;
+  font-size: 1.6rem;
+}
+
+.about-content h2 {
+  margin: 1.4rem 0 0.6rem;
+  font-size: 1.05rem;
+  opacity: 0.95;
+}
+
+.about-content section {
+  margin-bottom: 1.6rem;
+}
+
+.about-content code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.95em;
+}
+
+.about-content ul,
+.about-content ol {
+  margin: 0.75rem 0 0.75rem 1.2rem;
+  padding-left: 0;
+}
+
+.about-content li {
+  margin: 0.35rem 0;
+  line-height: 1.6;
+}
+
+
 
 /* Prologue stuff */
 
@@ -472,6 +562,12 @@ h1 {
   font-size: 0.7rem;
   color: var(--text-muted);
   text-align: right;
+}
+
+.tags-bottom {
+  margin-top: 2rem;
+  opacity: 0.75;
+  font-size: 0.9rem;
 }
 
 /* ABOUT PAGE ACCORDION */
@@ -572,6 +668,110 @@ h1 {
 .logs-entry-title {
   font-weight: 500;
 }
+/* =========================
+   LOGS LEDGER (index page)
+   ========================= */
+
+.logs-ledger ul {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+}
+
+.logs-ledger li {
+  margin: 0;
+  padding: 0;
+}
+
+/* Month header */
+.logs-ledger .month-row {
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+
+.logs-ledger .month {
+  padding: 0.85rem 0.25rem 0.85rem 0.5rem;
+  font-weight: 750;
+  opacity: 0.9;
+  letter-spacing: 0.02em;
+}
+
+/* Entry row */
+.logs-ledger .row {
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.logs-ledger .link {
+  display: grid;
+  grid-template-columns: 110px 1fr auto;
+  gap: 1rem;
+  padding: 0.85rem 0.25rem;
+  text-decoration: none;
+  align-items: start;
+}
+
+.logs-ledger .date {
+  opacity: 0.75;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.logs-ledger .title-line {
+  display: flex;
+  gap: 0.6rem;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.logs-ledger .title {
+  font-size: 1.05rem;
+  font-weight: 650;
+  line-height: 1.25;
+}
+
+.logs-ledger .tags-inline {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.logs-ledger .right {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.logs-ledger .pill {
+  font-size: 0.82rem;
+  opacity: 0.8;
+  border: 1px solid rgba(255,255,255,0.14);
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .logs-ledger .link {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+  .logs-ledger .right {
+    justify-content: flex-start;
+  }
+  .logs-ledger .date {
+    order: -1;
+  }
+}
+
+.row.visited .title {
+  text-decoration: line-through;
+  opacity: 0.75;
+}
+
+.row.last-read {
+  outline: 1px solid rgba(255,255,255,0.18);
+  border-radius: 10px;
+}
 
 .welcome {
   font-size: 0.9rem;
@@ -647,54 +847,72 @@ h1 {
   font-size:.9rem;
 }
 
-.about-content {
-  max-width: 65ch;
-  padding-bottom: 4rem;
+.clear-local {
+  margin-left: .5rem;
+  font-size: 0.85em;
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.6);
+  cursor: pointer;
+  text-decoration: underline;
 }
 
-.about-content h1 {
-  margin-bottom: 1.5rem;
+.clear-local:hover {
+  color: rgba(255,255,255,0.9);
 }
 
-.about-content section {
-  margin-bottom: 2.5rem;
+@media (min-width: 900px) {
+  header.top-bar.site-header {
+    position: fixed;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(1200px, calc(100vw - 32px));
+    z-index: 1000;
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    background: rgba(15, 23, 42, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    padding: 12px 16px;
+  }
+
+  /* Push content below the fixed header */
+  .layout {
+    margin-top: 120px; /* tweak once by eye */
+  }
 }
 
-.about-content {
-  max-width: 70ch;
-  padding: 1.25rem 0 4rem;
+
+
+
+.header-actions{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.35rem;
 }
 
-.about-content p {
-  line-height: 1.65;
-  margin: 0 0 1.1rem;
+.global-entry-nav {
+  font-size: 0.85rem;
+  opacity: 0.85;
 }
 
-.about-content h1 {
-  margin: 0 0 1.25rem;
-  text-transform: lowercase; /* if you want the vibe */
+.global-entry-nav a {
+  text-decoration: none;
 }
 
-.about-content h2 {
-  margin: 2rem 0 0.75rem;
-  font-size: 1.1rem;
-  opacity: 0.9;
+.global-entry-nav a:hover {
+  opacity: 1;
 }
 
-.about-content code {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  font-size: 0.95em;
+body.is-entry .global-entry-nav {
+  display: block;
 }
 
-.about-content ul {
-  margin: 0.5rem 0 0;
-  padding-left: 1.25rem;
-}
 
-.about-content li {
-  margin-bottom: 0.5rem;
-  line-height: 1.6;
-}
 
   /* Media / figures */
 .media {
@@ -768,18 +986,53 @@ h1 {
   }
 }
 
-/* Style for "You said:" */
-p strong:contains("You said:"),
-p em:contains("You said:"),
-p:contains("You said:") {
-    color: #5DA7E9; /* a readable blue */
-    font-weight: 600;
+/* Dialogue cues (logs) */
+/* Dialogue cues (logs) */
+
+.utterance {
+  margin: 0.75rem 0 0.5rem;
 }
 
-/* Style for "ChatGPT said:" */
-p strong:contains("ChatGPT said:"),
-p em:contains("ChatGPT said:"),
-p:contains("ChatGPT said:") {
-    color: #C568FF; /* lilac/purple */
-    font-weight: 600;
+.utterance .who {
+  position: relative;
+  font-weight: 700;
+  padding-left: 0.9rem;
+  margin-bottom: 0.25rem;
+}
+
+.utterance .who::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.15em;
+  width: 3px;
+  height: 1.1em;
+  border-radius: 3px;
+}
+
+/* Speaker colors */
+.utterance-user .who {
+  color: #7fb6ff;
+}
+
+.utterance-user .who::before {
+  background: rgba(127,182,255,0.55);
+}
+
+.utterance-assistant .who {
+  color: #ff6b6b;
+}
+
+.utterance-assistant .who::before {
+  background: rgba(255,107,107,0.55);
+}
+
+.utterance-assistant .say {
+  opacity: 0.92;
+}
+
+/* Body text */
+.utterance .say {
+  padding-left: 0.9rem;
+  line-height: 1.55;
 }

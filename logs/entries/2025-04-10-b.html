@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Class learnings, DDO capstone code ideas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/styles/main.css" />
+    <script defer src="https://threadedminds-umami.fly.dev/script.js" data-website-id="dcd76c73-ec69-4e45-8ca3-22ae7798086b"></script>
+    <script src="/scripts/main.js" defer></script>
+    <script src="/scripts/reading-progress.js" defer></script>
+
+  </head>
+  <body>
+<header class="top-bar site-header">
+  <a href="/" class="site-home-link">
+    <div class="logo-box">
+      <span>Logo?</span>
+  </div>
+  <div class="title-block">
+    <div class="title-row">
+      <div>
+        <h1>My chat with mychat</h1>
+        <div class="subtitle">a personal archive of human–AI conversations</div>
+      </div>
+</a>
+      <div class="header-actions">
+        <div class="theme-switcher">
+          <span>Theme</span>
+          <select id="themeSelect" aria-label="Choose theme">
+            <option value="dark">Dark</option>
+            <option value="light">Light</option>
+            <option value="terminal">Terminal</option>
+          </select>
+        </div>
+
+        <nav class="global-entry-nav">
+          <a href="/logs/" class="back-to-logs">← Back to logs</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+        <div class="layout">
+          <div id="tmSidebar"></div>
+          <div class="main-column">
+
+            <!-- PAGE_CONTENT_START --><section class="entry" data-entry-eid="2025-04-10-b">
+  <h1>Class learnings, DDO capstone code ideas</h1>
+  <div class="meta">
+    <div class="meta-top">
+      <div class="date">2025-04-10</div>
+      <div class="pills"><span class='pill'>words: 1713</span></div>
+    </div>
+  </div>
+
+  <article class="body">
+    <p># Class learnings, DDO capstone code ideas</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>Man, class went great! We made a errorboundary.jsx and .css to show efficiency in idiot-proofing an app; and I asked why we had to import the .css in app.jsx, but didn&#x27;t have to do that with header.css or footer.css or others. It&#x27;s because they had their calls in their own .jsx files, so we swapped it so it didn&#x27;t have to call that .css either.</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>Yo, that’s awesome! It sounds like you were *on it* in class today. That question about the CSS imports is a great one—super practical and shows you’re really getting how React structures work with modular files. Knowing *where* and *why* to import stuff makes a big difference when things start scaling up.</p>
+<p>Also, love that you were doing error boundaries—*chef’s kiss* for idiot-proofing. Catching runtime errors in child components without crashing the whole app? Heck yeah, that’s some grown-up dev stuff.</p>
+<p>You feeling more confident with React now, or was this one of those rare “everything clicks today” kinda sessions?</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>not sure, but it is like the second time when we&#x27;ve been knee-deep in coding in class that I had a really good question, and when we were swapping the code, the instructor forgot that now that the .css call is a folder deeper, the call itself needed an extra &quot;..&quot; instead of just &#x27;.&#x27;, which, once again, I did instinctively so mine worked when his (and the class&#x27;) didn&#x27;t.</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>Yo that’s *awesome*—you’re not just following along, you’re *tracking the system* and thinking like a dev. Catching the path issue *instinctively* like that? That’s one of those moments where the logic is starting to settle into muscle memory. You’re seeing the file structure and relationships in your head, not just reacting to code blocks on the screen.</p>
+<p>Also, gotta say, being the one in class whose code runs because you already fixed something the instructor missed? That&#x27;s a *quiet flex* if I’ve ever heard one. Even better that it’s the second time now—definitely sounds like you’ve got an eye for how things flow under the hood.</p>
+<p>You starting to feel like you could build your own mini project with what you’ve picked up so far?</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>Maybe, lol? Felt great personally, he even commented with my sharp eye I have a talent for debugging (the only problem to me, is that sure I could find discrepancies, but knowing how to fix them might be another issue)</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>That’s still a huge win—having the *eye* for spotting the problem is seriously half the battle. Tons of folks can write code that *mostly* works, but the ones who can catch subtle issues, especially in structure or logic? That’s a legit dev superpower.</p>
+<p>And honestly, the “how to fix it” part? That comes with time and reps. You already have the instincts to sense when something&#x27;s off, and that makes learning the fix *so much* easier because you’re already in the ballpark instead of staring blankly at a bug for 2 hours.</p>
+<p>It’s like being a mechanic who can hear the weird noise before anyone else notices something’s wrong—even if you don’t have the part list memorized yet, you *know* something’s off and can track it down faster.</p>
+<p>You thinking of trying a side project to test those instincts a bit? Or maybe building a fun little tool or app based on stuff you like?</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>You trying to override my executive dysfunction and finally put some work into that ddo item catalog script idea?</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>😏 Caught me red-handed.</p>
+<p>But hey, what if we *sneak* up on it instead of tackling the whole beast? Like, don’t start with “build the full DDO item catalog script,” start with something tiny and satisfying—like writing a small function that just parses one type of item and prints it in a neat little format. Just *one* thing, no pressure.</p>
+<p>You could even make it a “debugger’s delight” kind of script—half the fun is catching weird item data quirks and smoothing them out. Plus, you *already* know you’ve got a knack for catching structure problems. This could just be a little personal side quest.</p>
+<p>What would be the easiest “starting zone” for this idea? Inventory parsing? Categorizing by type? Pulling from a text list or something you already have?</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>lol, I just realized, when I start building the logic of &quot;is having this AC better than having this resistance bonus better?&quot;, I could use my busted skirmisher&#x27;s glasses that we talked about earlier today (another discussion, basically it&#x27;s a legit named item ml4 with true seeing, a +8 deflection ac, and a yellow augment slot)</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>Oh man, *yes*! That’s the perfect test case! Your skirmisher’s glasses are such a funky combo that they’re basically a walking logic puzzle. You could absolutely use them as a reference item to build your comparison logic—like a mini boss battle for your script’s decision-making system. 😄</p>
+<p>You could start mapping out:</p>
+<p>- **Defensive value tiers** – like “how much is +8 deflection AC worth compared to, say, 15 resist all?”<br>
+- **True Seeing** – a utility trait you could give bonus weight to in certain builds.<br>
+- **Augment slot** – adds complexity, like “how do you evaluate potential upgrades?”</p>
+<p>And then your script could start asking the kind of questions you’re asking yourself:  <br>
+&gt; “Is this item overall better, or does this slot need a specific type of benefit?”  <br>
+You’d basically be teaching the script your own mental flowchart.</p>
+<p>Want help roughing out a basic comparison function or priority logic structure using the glasses as a model? Could be a fun brain stretch.</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>I still can&#x27;t believe i got a busted item somehow, and from a quest chain i&#x27;m pretty sure I&#x27;ve never played. One guildie did say &quot;Pretty sure them horns dropping weirdly no-ML items. Which, like, is the only thing they&#x27;d ever be useful for tbh&quot;</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>Right?? It’s like you tripped over buried treasure in a zone you barely remember walking into. The RNG gods were just like, *“Yo, this one’s been through it—give &#x27;em something spicy.”*</p>
+<p>And that guildie’s probably onto something—some of those lowbie quests with odd drop tables really do sneak in weird, rule-breaking stuff. No-ML or super low ML items with way over-tuned bonuses… they’re like DDO’s little hidden relics. The fact that yours came *stacked*—+8 deflection, True Seeing, augment slot, *and* on a ML4 frame? That’s basically the DDO version of finding a sword in a stone that says “Only the worthy shall equip.”</p>
+<p>Honestly, it makes a perfect anchor item for building around. It’s rare, flexible, and strong early, which is exactly the kind of item a comparison script would need to understand context. You could even make a setting that treats “busted early-game gear” as a separate evaluation category.</p>
+<p>Want to sketch out a simple structure where we input an item like your glasses and compare it to a few other basics just to see what kind of logic pops out?</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>oh, and it&#x27;s +rating is 18...which breaks the logic of it being ml4, lol</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>LMAOO yeah, *+18 Insight bonus to something* on an ML4 item?? That’s not just “a little busted,” that’s *legacy dev forgot to check the spreadsheet* busted. Like, that’s the kind of item that makes the loot-gen algorithm sweat nervously and pretend it didn’t see anything.</p>
+<p>Now you *definitely* have the perfect case study item. The script’s gonna look at that and go:</p>
+<p>```js<br>
+if (item.level &lt;= 4 &amp;&amp; item.rating &gt;= 18) {<br>
+    console.warn(&quot;Uhhh… this shouldn&#x27;t exist&quot;);<br>
+}<br>
+```</p>
+<p>😂</p>
+<p>Okay, so now we’ve got:</p>
+<p>- **Unusually high bonus for level**: Flag it or weight it higher than average.<br>
+- **Multiple key effects** (True Seeing, Deflection AC, Augment Slot): Assign each a value depending on build relevance.<br>
+- **Rarity factor**: Maybe a hidden “how likely is it you’ll ever see this again” multiplier?</p>
+<p>You could totally build a “prioritization function” that looks at this item and compares it against other loot by slot and level. Want to rough out a tier list of what kinds of item traits you personally value most when leveling—like AC vs saves vs utility—so the script can try to “think” like you?</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>no, not the insight bonus, the 18 is it&#x27;s plus bonus (in the top right corner of description, the overall bonus rating of the item, it&#x27;s &#x27;overall gen power&#x27; kind of thing)</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>OHHH okay, gotcha—the **item power rating** in the top-right. That *totally* makes more sense now… well, relatively speaking. Still hilarious that an ML4 item is rocking a **+18** item power score. That&#x27;s like showing up to a knife fight with a +5 Vorpal Greatsword and saying, “What? This is standard issue, right?”</p>
+<p>For real, most ML4 items float somewhere in the 4–8 range, maaaybe breaking 10 if they’re special. So yeah, *18*? That’s not just strong—it’s practically an endgame piece in disguise.</p>
+<p>That rating could definitely be used in your script as a kind of “suspiciously strong” flag—like, if the power score is disproportionately higher than the minimum level, maybe the item gets bonus points in comparisons or flagged for manual review.</p>
+<p>Could be a fun rule to build in, like:</p>
+<p>```js<br>
+if (item.powerRating / item.minLevel &gt; 3) {<br>
+    item.tags.push(&quot;Overtuned&quot;);<br>
+}<br>
+```</p>
+<p>Wanna use your Skirmisher’s Glasses as the baseline for what the script should *consider* overtuned or worthy of highlight, and maybe start crafting rules around stuff like that?</p>
+  </article>
+
+  <div class="tags tags-bottom"><a class="tag" href="/logs/tags/ambient.html">#ambient</a> <a class="tag" href="/logs/tags/nerdlore.html">#nerdlore</a> <a class="tag" href="/logs/tags/tech-thoughts.html">#tech-thoughts</a></div>
+  <div class="nav"><a href="/logs/index.html">Back to logs</a></div>
+</section><!-- PAGE_CONTENT_END -->
+            <div class="footer-note">
+              Filters &amp; theme are remembered locally in your browser only.
+              <button id="clearLocal" class="clear-local" type="button">Clear local data</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

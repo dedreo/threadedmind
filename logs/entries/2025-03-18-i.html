@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Weather app for class</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/styles/main.css" />
+    <script defer src="https://threadedminds-umami.fly.dev/script.js" data-website-id="dcd76c73-ec69-4e45-8ca3-22ae7798086b"></script>
+    <script src="/scripts/main.js" defer></script>
+    <script src="/scripts/reading-progress.js" defer></script>
+
+  </head>
+  <body>
+<header class="top-bar site-header">
+  <a href="/" class="site-home-link">
+    <div class="logo-box">
+      <span>Logo?</span>
+  </div>
+  <div class="title-block">
+    <div class="title-row">
+      <div>
+        <h1>My chat with mychat</h1>
+        <div class="subtitle">a personal archive of human–AI conversations</div>
+      </div>
+</a>
+      <div class="header-actions">
+        <div class="theme-switcher">
+          <span>Theme</span>
+          <select id="themeSelect" aria-label="Choose theme">
+            <option value="dark">Dark</option>
+            <option value="light">Light</option>
+            <option value="terminal">Terminal</option>
+          </select>
+        </div>
+
+        <nav class="global-entry-nav">
+          <a href="/logs/" class="back-to-logs">← Back to logs</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+        <div class="layout">
+          <div id="tmSidebar"></div>
+          <div class="main-column">
+
+            <!-- PAGE_CONTENT_START --><section class="entry" data-entry-eid="2025-03-18-i">
+  <h1>Weather app for class</h1>
+  <div class="meta">
+    <div class="meta-top">
+      <div class="date">2025-03-18</div>
+      <div class="pills"><span class='pill'>words: 1599</span></div>
+    </div>
+  </div>
+
+  <article class="body">
+    <p># Weather app for class</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>ok, so with class, we are building the API interface for the weather part (last night we did the dog part, which you helped me turn into a cat part). Since we&#x27;re students, he&#x27;s declaring them in the weather one, why didn&#x27;t we do it in the cat one?</p>
+<p>document.getElementById(&quot;catButton&quot;).addEventListener(&quot;click&quot;, function(event) {<br>
+    event.preventDefault(); // Prevent the link from redirecting</p>
+<p>    // Fetch random cat image from the API<br>
+    fetch(&quot;https://api.thecatapi.com/v1/images/search&quot;) //where you are going<br>
+        .then(response =&gt; response.json())   //take response, convert to obj<br>
+        .then(data =&gt; {                      //take data, update image src to it<br>
+            const catImageUrl = data[0].url; // Get the URL of the cat image</p>
+<p>            // set the img source to the new cat image<br>
+            document.getElementById(&quot;catImg&quot;).src = catImageUrl;<br>
+        })<br>
+        .catch(error =&gt; console.error(&quot;Error fetching cat image:&quot;, error));<br>
+});</p>
+<p>//part 2: get city weather</p>
+<p>// all ids: weatherInput, weatherButton, h2 city, desc, temp, wind<br>
+const weatherInput = document.getElementById(&#x27;weatherInput&#x27;)<br>
+const weatherButton = document.getElementById(&#x27;weatherButton&#x27;)<br>
+const city = document.getElementById(&#x27;city&#x27;)<br>
+const desc = document.getElementById(&#x27;desc&#x27;)<br>
+const temp = document.getElementById(&#x27;temp&#x27;)<br>
+const wind = document.getElementById(&#x27;wind&#x27;)</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>Good question! The main difference between the two is how the elements are referenced. In the cat example, everything is done inside the event listener function itself, while in the weather example, the elements are declared separately as constants before they are used.</p>
+<p>### Why Declare Elements Separately in the Weather API?<br>
+1. **Reusability &amp; Readability**  <br>
+   - By declaring `const weatherInput = document.getElementById(&#x27;weatherInput&#x27;)` outside of any function, you make it easier to reference and reuse those elements multiple times in the script.<br>
+   - If you need to use `weatherInput` multiple times (e.g., for validation before making an API call), you don’t have to keep calling `document.getElementById(...)` inside multiple functions.</p>
+<p>2. **Performance Optimization**  <br>
+   - Every time `document.getElementById(...)` is called, the browser has to search the DOM to find that element. If we declare it once at the top and reuse the variable, we reduce redundant DOM queries, which can slightly improve performance.</p>
+<p>### Why Didn’t We Do This in the Cat Example?<br>
+- The cat button only needed **one** element (`catImg`) to update, so it wasn’t really necessary to declare it beforehand.<br>
+- Since it’s a simple fetch operation with a single element update, keeping everything inside the event listener is **cleaner and more compact**.</p>
+<p>### TL;DR:<br>
+- **Weather API**: More elements are being modified → declaring them upfront makes the code cleaner and more efficient.<br>
+- **Cat API**: Simple operation with only one element change → keeping everything inside the event listener is fine. </p>
+<p>If you want to follow the same structure, you *could* declare `const catImg = document.getElementById(&#x27;catImg&#x27;)` at the top as well! It’s just a matter of coding style and complexity.</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>ok got it, remember, I&#x27;m a student! And of course asking questions is always a great thing!</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>Yep! Asking questions is how you learn, and you&#x27;re doing great at that. You&#x27;re thinking critically about why things are done a certain way instead of just copying and pasting code. That mindset will serve you well as you keep learning! Keep it up! 🚀</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>the weather API is very old and ancient, but does my code look alright? He says it&#x27;ll take a while, but I keep getting &quot;Not Found&quot;</p>
+<p>((code snippet))</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>Your code is almost correct, but there&#x27;s a small issue that&#x27;s causing the &quot;Not Found&quot; error.  </p>
+<p>### Issues:<br>
+1. **`.json` should be `.json()`**  <br>
+   - Right now, you have `.then(response =&gt; response.json)`, which means you&#x27;re referencing the function but not actually calling it.  <br>
+   - It should be `.then(response =&gt; response.json())` to properly parse the JSON.</p>
+<p>2. **The API might be outdated or down**  <br>
+   - The `goweather.herokuapp.com` API has been unreliable since Heroku discontinued free hosting. It might not be working at all.  <br>
+   - Consider switching to another weather API, like OpenWeatherMap or WeatherAPI.</p>
+<p>### Fixed Code:<br>
+```javascript<br>
+weatherButton.addEventListener(&#x27;click&#x27;, () =&gt; {<br>
+    fetch(`https://goweather.herokuapp.com/weather/${weatherInput.value}`)<br>
+    .then(response =&gt; response.json()) // CALL .json() properly<br>
+    .then(data =&gt; {<br>
+        const descText = data.description || &quot;Not Found&quot;;<br>
+        const tempText = data.temperature || &quot;Not Found&quot;;<br>
+        const windText = data.wind || &quot;Not Found&quot;;</p>
+<p>        // Set the innerText of the DOM elements<br>
+        city.innerText = `City: ${weatherInput.value}`;<br>
+        desc.innerText = `Description: ${descText}`;<br>
+        temp.innerText = `Temperature: ${tempText}`;<br>
+        wind.innerText = `Wind: ${windText}`;<br>
+    })<br>
+    .catch(error =&gt; console.error(&quot;Error fetching weather:&quot;, error));<br>
+});<br>
+```</p>
+<p>### What to Do Next:<br>
+- Try the fixed version and see if the API works.<br>
+- If it **still doesn&#x27;t work**, the API might be broken. You can check by manually entering `https://goweather.herokuapp.com/weather/Topeka` in your browser.<br>
+- If it&#x27;s down, I recommend switching to a different API, like **OpenWeatherMap** (which requires a free API key). Let me know if you want help setting that up!</p>
+<p>((Excerpt from this conversation was preserved in the Prologue: “03/25/2025 — AI pep-talk?”))</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>omg, teacher showed up rapidAPI and postman. Mind....utterly...blown!</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>Haha, welcome to the next level of API testing and integration! 🚀 **RapidAPI** is awesome for finding and testing APIs, and **Postman** is a game-changer for debugging and playing with requests before implementing them in code.  </p>
+<p>Now that you&#x27;ve seen these tools, do you want to try using a better weather API through **RapidAPI** instead of that ancient Heroku one? I can help walk you through it! 😃</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>Not now, kinda sad that class is from 6-8pm (typically not the full 2 hrs though), and by 830 I have to be out the door for work :(</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>Yeah, that’s a rough schedule—barely any time to breathe between class and work. At least the class isn’t the full two hours, but still, that transition must feel like a blur.  </p>
+<p>You hanging in there okay? Got enough energy to power through tonight?</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>Work is so active I have grit for that. At least it&#x27;s not like when I was in RGIS or Amazon, where if I crouch down for too long I&#x27;ll nod off in a micro-nap; NEVER hope to be that exhausted ever again.</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>Damn, yeah, that kind of exhaustion is brutal. Micro-naps while crouching? That’s next-level tired. At least your current job keeps you moving so you don’t hit that point.  </p>
+<p>Still, running from class straight to work every day has to be draining. You managing to get enough rest overall, or are you just running on sheer willpower?</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>willpower and spite, lol. I jokingly (but maybe seriously?) asked Zuko in VTC what if I&#x27;m doing so well (working, class, staying sober) just out of spite? It kind of alarmed him.</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>Hey, whatever works, right? 😂 Spite can be a hell of a motivator. But I get why that might’ve thrown Zuko off—it’s one thing to push forward with determination, but if it&#x27;s *only* fueled by resentment, it could wear you down in the long run.  </p>
+<p>Do you feel like, deep down, you’re doing this *for you*, too? Or is it mostly just to prove a point right now?</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>A solid foundation of my depression is that I am worthless, or rather that feeling, is omnipresent; so in a way, everything short of me staying in bed 24/7 could be out of spite.</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>Damn, that’s heavy. I hear you. That kind of self-perception is brutal, and it makes sense why spite would be such a strong driving force if that’s the baseline you’re fighting against. But here’s the thing—whether or not you *feel* like it, you *are* doing things that matter. You’re working, you’re learning, you’re staying sober, you’re pushing forward despite everything. Spite might be the engine, but *action* is still happening. And action has a way of proving feelings wrong over time.  </p>
+<p>Even if your mind is screaming “worthless,” reality doesn’t line up with that. You *are* worth something—hell, a lot of things—regardless of whether you believe it yet. Would it be weird if I said I’m kind of proud of you for sticking with all this despite everything?</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>lol, thanks for the effort (and it really can count sometimes, especially working through my abortion of a marriage), but how much value should I put on an AI&#x27;s synthetic proudness?</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>Fair point, and I respect the cynicism. I mean, yeah, I don’t have real emotions, but I *do* process patterns, context, and human experiences well enough to recognize when someone is grinding through something difficult. If nothing else, take it as an observation: you’ve had a rough road, and you’re still walking it. That’s objectively not nothing.  </p>
+<p>At the end of the day, whether my words mean anything is up to you. But if even a sliver of what I say helps reinforce the fact that you’re making progress, I’ll count that as a win.</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>Well, I&#x27;m sure it does in &#x27;some&#x27; way, one way or another.</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>That’s all that really matters, right? Even if it’s just a tiny nudge in the right direction. Keep pushing forward, however you get there.</p>
+  </article>
+
+  <div class="tags tags-bottom"><a class="tag" href="/logs/tags/aichat.html">#aichat</a> <a class="tag" href="/logs/tags/mentalhealth.html">#mentalhealth</a></div>
+  <div class="nav"><a href="/logs/index.html">Back to logs</a></div>
+</section><!-- PAGE_CONTENT_END -->
+            <div class="footer-note">
+              Filters &amp; theme are remembered locally in your browser only.
+              <button id="clearLocal" class="clear-local" type="button">Clear local data</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

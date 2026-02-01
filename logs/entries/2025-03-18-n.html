@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Updated API, Songlist,</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/styles/main.css" />
+    <script defer src="https://threadedminds-umami.fly.dev/script.js" data-website-id="dcd76c73-ec69-4e45-8ca3-22ae7798086b"></script>
+    <script src="/scripts/main.js" defer></script>
+    <script src="/scripts/reading-progress.js" defer></script>
+
+  </head>
+  <body>
+<header class="top-bar site-header">
+  <a href="/" class="site-home-link">
+    <div class="logo-box">
+      <span>Logo?</span>
+  </div>
+  <div class="title-block">
+    <div class="title-row">
+      <div>
+        <h1>My chat with mychat</h1>
+        <div class="subtitle">a personal archive of human–AI conversations</div>
+      </div>
+</a>
+      <div class="header-actions">
+        <div class="theme-switcher">
+          <span>Theme</span>
+          <select id="themeSelect" aria-label="Choose theme">
+            <option value="dark">Dark</option>
+            <option value="light">Light</option>
+            <option value="terminal">Terminal</option>
+          </select>
+        </div>
+
+        <nav class="global-entry-nav">
+          <a href="/logs/" class="back-to-logs">← Back to logs</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+        <div class="layout">
+          <div id="tmSidebar"></div>
+          <div class="main-column">
+
+            <!-- PAGE_CONTENT_START --><section class="entry" data-entry-eid="2025-03-18-n">
+  <h1>Updated API, Songlist,</h1>
+  <div class="meta">
+    <div class="meta-top">
+      <div class="date">2025-03-18</div>
+      <div class="pills"><span class='pill'>words: 2490</span></div>
+    </div>
+  </div>
+
+  <article class="body">
+    <p># Updated API, Songlist, </p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>Oh yea, got an updated weather api that would work better for that class item?</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>Yeah! The API you were using (`goweather.herokuapp.com`) is pretty outdated and unreliable. A much better alternative would be **OpenWeatherMap** or **WeatherAPI**, both of which have free tiers. Here&#x27;s how you can update your weather app using **OpenWeatherMap**:</p>
+<p>### Steps to Use OpenWeatherMap API:<br>
+1. **Sign up for a free API key**  <br>
+   - Go to [OpenWeatherMap](https://home.openweathermap.org/users/sign_up) and create a free account.  <br>
+   - After signing up, get your **API key** from the &quot;API keys&quot; section.  </p>
+<p>2. **Modify Your JavaScript Code**  <br>
+   Replace your old fetch URL with OpenWeatherMap’s API and ensure you&#x27;re correctly handling the JSON response.</p>
+<p>### **Updated Weather API Code**</p>
+<p>((code))</p>
+<p>### **What’s Improved?**<br>
+✅ Uses **OpenWeatherMap**, a modern and reliable API  <br>
+✅ Converts temperature to **Fahrenheit** using `units=imperial`  <br>
+✅ Handles errors properly (e.g., invalid city names)  <br>
+✅ Displays **country code** to differentiate cities with similar names  </p>
+<p>**Next Steps:**  <br>
+- **Replace** `&#x27;YOUR_API_KEY_HERE&#x27;` with your actual API key.  <br>
+- Test it out and let me know if you need tweaks! 🚀</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>I know username and password of course, but briefly explain the rest of these fields:<br>
+&quot;uuid&quot;: &quot;81501300-d802-40d2-9408-be4e5c2cbfed&quot;,<br>
+                &quot;username&quot;: &quot;xxxxxxx&quot;,<br>
+                &quot;password&quot;: &quot;xxxxx&quot;,<br>
+                &quot;salt&quot;: &quot;3HaasdZdfawwag&quot;,<br>
+                &quot;md5&quot;: &quot;d4fasdf688a05d762f199e069d9a19475&quot;,<br>
+                &quot;sha1&quot;: &quot;d62686dfase486e6b81d1a088bb8b834fb3a913c4&quot;,<br>
+                &quot;sha256&quot;: &quot;de30d2006737a00bafc87aadfasdfewbd291</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>Sure! Here’s a brief rundown of what each field represents:</p>
+<p>- **`uuid`**: A **universally unique identifier**, typically used to uniquely identify a user in a database or system. It ensures no two users have the same identifier.  </p>
+<p>- **`salt`**: A **random string** added to the password before hashing to prevent common attacks (like rainbow table attacks). This makes it harder to crack passwords by precomputing hashes.  </p>
+<p>- **`md5`**: The **MD5 hash** of the password (with salt, in a secure system). MD5 is a fast but outdated hashing algorithm because it&#x27;s vulnerable to collisions and brute-force attacks.  </p>
+<p>- **`sha1`**: The **SHA-1 hash** of the password. SHA-1 is stronger than MD5 but still considered weak due to vulnerabilities found over time.  </p>
+<p>- **`sha256`**: The **SHA-256 hash** of the password. It&#x27;s much more secure than MD5 and SHA-1, commonly used in modern security applications.  </p>
+<p>### **How It All Works Together:**  <br>
+1. When a user sets a password (`dodger` in this case), a random **salt** (`3HakdZjg`) is added to it.  <br>
+2. The salted password is then hashed using multiple algorithms (`MD5`, `SHA-1`, `SHA-256`) to store securely.  <br>
+3. When logging in, the system **re-hashes** the entered password with the stored salt and compares the result to the stored hashes.  </p>
+<p>If this was a **real** user database, storing only MD5 or SHA-1 would be **bad practice** due to security weaknesses. Modern systems use **bcrypt, Argon2, or PBKDF2** instead.</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>okay, data security is not my strong suit, but I knew of salt</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>Yeah, you’ve got the right idea! Knowing about **salt** is already a big step in understanding how passwords are secured. If you ever want to get deeper into security concepts, just ask—I can break things down in a way that makes sense without overloading you.  </p>
+<p>For front-end dev, you&#x27;ll mostly deal with **API authentication** (like API keys, OAuth, or JWTs), but it&#x27;s always good to have a basic grasp of how passwords are stored and verified on the backend.</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>slightly updated song list of what I&#x27;d make for Sly:<br>
+All Time Low - Monsters<br>
+Crossfade - Cold		<br>
+The Kinks - Do It Again<br>
+Tina Dickow - Back Where We Started<br>
+Lost Sky, Jex - Where We Started<br>
+Dayon - Where We Started<br>
+Genesis - That&#x27;s All<br>
+ - What&#x27;s my Age Again?<br>
+Matchbox 20 - If You&#x27;re Gone<br>
+3 Doors Down - If I Could Be Like That<br>
+Lana Del Rey - Video Games<br>
+Godsmack - Truth<br>
+Counting Crows - A Long December<br>
+Avenue Q - There&#x27;s a Fine Fine Line<br>
+Timbaland - Apologize<br>
+No Doubt - Don&#x27;t Speak</p>
+<p>I realized you had no comment on the avenue q song last time, when I think that&#x27;s a clincher in explaining how I feel about things, lol.</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>Oh, **&quot;There&#x27;s a Fine, Fine Line&quot;** is *definitely* a clincher in that playlist—it’s one of those songs that just punches you in the gut with its simplicity and truth. The whole &quot;there’s a fine, fine line between love and a waste of time&quot; really nails that sense of regret and realization, which seems to fit into the overarching theme of your list: lost connections, introspection, and some mix of frustration and acceptance.  </p>
+<p>It also makes a sharp contrast with something like **&quot;Monsters&quot;** or **&quot;Cold&quot;**, which lean more into anger or bitterness, while Avenue Q&#x27;s song is more about resignation. If your goal is to capture different emotional angles of what you&#x27;ve been through, that one’s a *very* effective choice.  </p>
+<p>Are you thinking of arranging the songs in a particular order to tell a story, or is it more of a &quot;press shuffle and see where the emotions take you&quot; kind of deal?</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>def tell a story, like I said, similar to NIN downward spiral. Speaking of which, since I adore NIN (mostly before zero though, I&#x27;m old), I&#x27;d love to include a NIN in there, but Hurt would be too on the nose.</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>If you’re looking for a NIN song that fits but isn’t as obvious as *Hurt*, maybe *Something I Can Never Have*? It’s got that slow-burn devastation without being overplayed. Or *The Wretched* if you want more anger in the mix.</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>In &quot;that&#x27;s what I get&quot; the line &quot;it meant everything to me&quot; used to get me instantly to tear up due to those songs being my lifeline during depressive teen years crushing on impossible girls in my life.</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>That line definitely hits hard, especially if those songs were your emotional anchor during tough times. The rawness of *That&#x27;s What I Get* makes it a strong contender for your list—it carries that deep sense of betrayal and disappointment without being as overused as *Hurt*. Would you want something else from *Pretty Hate Machine*, or maybe a later album?</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>lol, happiness in slavery if placed right in the playlist order, could be nifty.</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>Oh damn, *Happiness in Slavery* would be a bold and chaotic pick. If placed right, it could represent that moment of resigned realization—like breaking free but realizing the cost. If you&#x27;re weaving a story, where do you see it fitting? Before or after something softer, like *Apologize* or *A Long December*?</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>not sure, it&#x27;d probably be too niche to notice, but it would signal the short time frame where we both knew about her cheating, but decided to stay together (I was still drinking HEAVILY, some due to help ignore the hurt), until I got the DUI that made her start the legal seperation discussion.</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>Oh yeah, that makes sense—like a twisted form of acceptance, going along with the pain because it’s just *easier* in that moment. If it’s meant to mark that limbo period, it’d probably go between two songs that really hammer in the emotional weight of before and after. Maybe wedged between *Avenue Q – There&#x27;s a Fine, Fine Line* (realization of what’s lost) and *Timbaland – Apologize* (that moment where the weight really crashes down)? </p>
+<p>That’d make *Happiness in Slavery* feel like the numb, almost self-destructive interlude between heartbreak and finality.</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>and if i could be like that...she loves 3 doors down, and I do somewhat, and that song always just felt like a personal thing with my depression</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>Yeah, *If I Could Be Like That* is one of those songs that hits deep when you’re stuck in that place of longing—whether it’s for a different life, a different self, or just the ability to escape your own head. If she loved 3 Doors Down too, that probably adds another layer of meaning, like a subconscious tie between your struggles and the relationship itself.  </p>
+<p>If you’re structuring this like *The Downward Spiral*, that song could fit in the section where you’re still holding on to hope, but it’s fragile. Maybe before *Video Games*? That could turn it into a transition from dreaming about a different life to realizing the dream isn’t mutual.</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>lol, well, I finally cracked and texted wife &quot;So has the lawyer communicated at all? The divorce motion was denied?&quot; and she filled me in that it wasn&#x27;t denied, she just got the paperwork yesterday; so I checked mine as I got off work, and got my copy. Yay I&#x27;m divorced, and I guess the lady at the courthouse was just stupid.</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>Congrats? I guess? I mean, it’s been a long time coming, and now it’s *officially* done. No more uncertainty, no more waiting on nonsense bureaucracy or miscommunication.  </p>
+<p>How do you feel about it now that you *know*?</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>Well, that’s a big step, even if it came with some confusion along the way. It’s definitely a strange mix of emotions, but now it’s official. It’s good that you got clarity on the situation—having that weight lifted can help, even if it doesn’t erase all the other baggage. How are you feeling about it now that it’s done?</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>Yup, now other than the fact that my name is still on the mortgage, I don&#x27;t owe her jack shit of anything going forward!</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>Hell yeah, clean break—well, as clean as it can get with that mortgage still hanging around. Hopefully, she either refinances it soon or sells, so you can wash your hands of *that* too. But at least now, there&#x27;s nothing else tying you down legally. Feels like a big weight off, I imagine?</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>Yea, I mean I&#x27;ve been nothing but mostly a big ball of anger/sadness pretty consistently for the past two years; at least now at this point it&#x27;s my own damn fault if I continue to have issues moving on and moving away emotionally. No obligations!</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>Exactly—now it&#x27;s all *your* timeline, *your* emotions, and *your* choices. No more waiting on legal nonsense or dealing with obligations you didn&#x27;t sign up for. If anger and sadness still pop up, that&#x27;s natural, but at least it&#x27;s not tied to being legally stuck anymore. And that means you can focus on whatever actually moves *you* forward, not just reacting to her bullshit.</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>Yea, I spent a good chunk of work last night ruminating on how often there were red flags with Adam, but, as I told the therapist she got me on betterhelp.com for a while &quot;I trust my wife, because I have no reason not to.&quot; it was true at the time, but blinded me to some obvious signs.</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>Yeah, hindsight is brutal like that. At the time, you were acting in good faith, trusting her because that’s what a healthy relationship *should* be built on. It’s not your fault she took advantage of that trust. But it’s frustrating as hell to look back and see all the red flags you missed because you weren’t looking for them—you *shouldn’t* have had to. </p>
+<p>At least now, you can see things clearly. Doesn’t make the past sting less, but it does mean you’re not walking into anything like that again.</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>So, sometimes my protein levels are a little low when I go donate plasma. If I&#x27;m due to go in about an hour, would eating some almonds right now do anything?</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>Almonds have some protein, but they won’t significantly boost your plasma protein levels in just an hour. Your body needs time to digest and process proteins, usually several hours to a day.  </p>
+<p>For a quick boost, a protein shake, Greek yogurt, or even a couple of boiled eggs would do more in the short term. Staying consistently high in protein on donation days (or the day before) helps the most.</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>I always figure having chicken or burgers for late lunch before work, and having my triple PB&amp;J should be enough?</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>Yeah, that sounds like a solid plan! Chicken, burgers, and PB&amp;J all pack a good protein punch. The only thing I’d double-check is if you’re getting enough iron along with it since low iron can also mess with plasma donations. Maybe throw in some spinach, beans, or fortified cereals now and then. But overall, your protein intake seems solid—just gotta keep it consistent!</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>I mean, it&#x27;s never too low to donate, but they have said sometimes it&#x27;s on the low end.</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>Ah, gotcha. If it&#x27;s just on the low end but still acceptable, then yeah, maybe a little boost right before donating could help. Almonds wouldn&#x27;t hurt, but they’re not super high in protein per serving. If you want a quick fix, a protein shake or even a boiled egg might do more. Also, staying hydrated helps with plasma quality, so chug some water too!</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>Oh I&#x27;m always super-oozy, sometimes they&#x27;re even like &quot;wow, 40 minutes&quot; or whatever, sometimes.</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>Nice, sounds like you&#x27;re a plasma-donating machine! If you&#x27;re already that efficient, then yeah, just a little protein bump might be good for keeping your levels steady. Maybe toss in a bit of Greek yogurt or some cheese with those almonds if you have time.</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>Benny is ALWAYS trying to get way too close to my bowl of morning cereal, even if I put my face over it and growl at him. I don&#x27;t want his frickin&#x27; shedding to get in my milk!</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>Benny’s on a mission, and that mission is **your cereal.** 😂 You could try setting a decoy—like a tiny dish with a cat-safe treat nearby—so he focuses on that instead of your bowl. Or just keep enforcing boundaries… but let’s be real, Benny’s probably thinking, *&quot;Boundaries? Never heard of &#x27;em.&quot;*</p>
+  </article>
+
+  <div class="tags tags-bottom"><a class="tag" href="/logs/tags/checkpoint.html">#checkpoint</a> <a class="tag" href="/logs/tags/core.html">#core</a> <a class="tag" href="/logs/tags/mentalhealth.html">#mentalhealth</a> <a class="tag" href="/logs/tags/sly.html">#sly</a></div>
+  <div class="nav"><a href="/logs/index.html">Back to logs</a></div>
+</section><!-- PAGE_CONTENT_END -->
+            <div class="footer-note">
+              Filters &amp; theme are remembered locally in your browser only.
+              <button id="clearLocal" class="clear-local" type="button">Clear local data</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

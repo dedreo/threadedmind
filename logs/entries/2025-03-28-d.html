@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Structure and Destructuring</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/styles/main.css" />
+    <script defer src="https://threadedminds-umami.fly.dev/script.js" data-website-id="dcd76c73-ec69-4e45-8ca3-22ae7798086b"></script>
+    <script src="/scripts/main.js" defer></script>
+    <script src="/scripts/reading-progress.js" defer></script>
+
+  </head>
+  <body>
+<header class="top-bar site-header">
+  <a href="/" class="site-home-link">
+    <div class="logo-box">
+      <span>Logo?</span>
+  </div>
+  <div class="title-block">
+    <div class="title-row">
+      <div>
+        <h1>My chat with mychat</h1>
+        <div class="subtitle">a personal archive of human–AI conversations</div>
+      </div>
+</a>
+      <div class="header-actions">
+        <div class="theme-switcher">
+          <span>Theme</span>
+          <select id="themeSelect" aria-label="Choose theme">
+            <option value="dark">Dark</option>
+            <option value="light">Light</option>
+            <option value="terminal">Terminal</option>
+          </select>
+        </div>
+
+        <nav class="global-entry-nav">
+          <a href="/logs/" class="back-to-logs">← Back to logs</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+        <div class="layout">
+          <div id="tmSidebar"></div>
+          <div class="main-column">
+
+            <!-- PAGE_CONTENT_START --><section class="entry" data-entry-eid="2025-03-28-d">
+  <h1>Structure and Destructuring</h1>
+  <div class="meta">
+    <div class="meta-top">
+      <div class="date">2025-03-28</div>
+      <div class="pills"><span class='pill'>words: 2626</span></div>
+    </div>
+  </div>
+
+  <article class="body">
+    <p># Structure and Destructuring</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>so for my class, is the =&gt; basically in my head as &quot;now do this!&quot; kind of correct?</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>Yeah, that&#x27;s a solid way to think about it!  </p>
+<p>In JavaScript, the `=&gt;` in an **arrow function** is basically saying:  </p>
+<p>**&quot;Take the input(s) on the left, and now do this with them!&quot;**  </p>
+<p>For example:  </p>
+<p>```js<br>
+const add = (a, b) =&gt; a + b;<br>
+```</p>
+<p>Reads like: **&quot;Take `a` and `b`, now return `a + b`!&quot;**  </p>
+<p>It’s just a shorthand for writing functions, so if that mental model helps you, go with it!</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>explain destructuring in this example:<br>
+ // Object destructuring is used here to make the code more concise.<br>
+                const { lat, lon } = data[0]; // Get the first result&#x27;s coordinates</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>Destructuring in this example is a way to **extract specific properties** from an object and assign them to variables in a more concise way.  </p>
+<p>Here&#x27;s what&#x27;s happening in your code:  </p>
+<p>```js<br>
+const { lat, lon } = data[0];<br>
+```</p>
+<p>### Breaking it Down:  <br>
+1. **`data[0]`** – This means &quot;get the first item in the `data` array.&quot;  <br>
+2. **`{ lat, lon }`** – This is **object destructuring**.  <br>
+   - It pulls out the `lat` and `lon` properties from `data[0]`.  <br>
+   - Instead of manually writing:<br>
+     ```js<br>
+     const lat = data[0].lat;<br>
+     const lon = data[0].lon;<br>
+     ```<br>
+     You can **destructure it in one line**!  </p>
+<p>### Mental Model:  <br>
+Think of it like **unpacking** a box. Instead of saying:  <br>
+&gt; &quot;Go into the box, find the `lat` and `lon`, and bring them out one by one,&quot;  <br>
+you&#x27;re saying:  <br>
+&gt; &quot;Just grab `lat` and `lon` directly from inside the box and hand them to me.&quot;  </p>
+<p>Much cleaner and easier to read! 🚀</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>explain destructuring in great detail like in that line</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>Alright, let’s go deep into destructuring with your specific example:  </p>
+<p>```js<br>
+const { lat, lon } = data[0]; // Get the first result&#x27;s coordinates<br>
+```</p>
+<p>### **1. Understanding the Data Structure**<br>
+To understand what&#x27;s happening, let&#x27;s assume `data` is an **array of objects**, something like this:</p>
+<p>```js<br>
+const data = [<br>
+    { lat: 40.7128, lon: -74.0060, city: &quot;New York&quot; },<br>
+    { lat: 34.0522, lon: -118.2437, city: &quot;Los Angeles&quot; }<br>
+];<br>
+```</p>
+<p>Here, `data[0]` refers to the **first object** inside the array:</p>
+<p>```js<br>
+{ lat: 40.7128, lon: -74.0060, city: &quot;New York&quot; }<br>
+```</p>
+<p>### **2. Standard Way Without Destructuring**<br>
+Without using destructuring, we would extract the values like this:</p>
+<p>```js<br>
+const firstResult = data[0];  // Get the first object<br>
+const lat = firstResult.lat;  // Extract latitude<br>
+const lon = firstResult.lon;  // Extract longitude</p>
+<p>console.log(lat, lon); // 40.7128 -74.0060<br>
+```</p>
+<p>This works, but it’s a bit **verbose**—we are manually referencing `firstResult` multiple times.</p>
+<p>### **3. Destructuring in Action**<br>
+Now, with **object destructuring**, we can extract `lat` and `lon` in a single step:</p>
+<p>```js<br>
+const { lat, lon } = data[0];<br>
+```</p>
+<p>#### **Breaking it Down**<br>
+- **`data[0]`** → Accesses the first object in the `data` array.<br>
+- **`{ lat, lon } = data[0]`** → Looks inside that object and pulls out **only** the `lat` and `lon` properties.<br>
+- The extracted values are now stored in two variables:  <br>
+  - `lat = 40.7128`<br>
+  - `lon = -74.0060`</p>
+<p>It’s equivalent to writing:</p>
+<p>```js<br>
+const lat = data[0].lat;<br>
+const lon = data[0].lon;<br>
+```</p>
+<p>But it&#x27;s **shorter, cleaner, and more readable**.</p>
+<p>---</p>
+<p>### **4. Why Use Destructuring?**<br>
+- **Concise:** Fewer lines of code.<br>
+- **Readable:** Immediately clear which values are being extracted.<br>
+- **Efficient:** Avoids repeated `data[0]` lookups.</p>
+<p>---</p>
+<p>### **5. Extra Features of Destructuring**<br>
+#### **Renaming Variables**<br>
+If we want different variable names instead of `lat` and `lon`, we can rename them during destructuring:</p>
+<p>```js<br>
+const { lat: latitude, lon: longitude } = data[0];</p>
+<p>console.log(latitude, longitude); // 40.7128 -74.0060<br>
+```</p>
+<p>#### **Providing Default Values**<br>
+If `lat` or `lon` might be missing, we can set **default values**:</p>
+<p>```js<br>
+const { lat = 0, lon = 0 } = data[0];<br>
+```</p>
+<p>This ensures `lat` and `lon` will be `0` instead of `undefined` if they’re missing.</p>
+<p>### **6. Final Thoughts**<br>
+Your line:</p>
+<p>```js<br>
+const { lat, lon } = data[0];<br>
+```<br>
+is **extracting and assigning** values in a single, elegant step. It&#x27;s a fundamental feature of modern JavaScript and makes working with objects much more efficient. 🚀</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>give me general reasonings why I would want to rename variables or have default values when destructuring</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>### **Why Rename Variables When Destructuring?**  </p>
+<p>1. **Avoid Conflicts with Existing Variables**  <br>
+   - If you already have a variable with the same name, renaming helps prevent conflicts.  <br>
+   ```js<br>
+   const lat = 100; // Existing variable<br>
+   const { lat: latitude, lon: longitude } = data[0]; // Avoids overwriting<br>
+   ```<br>
+   - Now, `lat` remains `100`, and `latitude` stores the extracted value.  </p>
+<p>2. **Improve Readability &amp; Clarity**  <br>
+   - Sometimes, property names are not clear enough. Renaming makes it more intuitive.  <br>
+   ```js<br>
+   const { lat: latitude, lon: longitude } = data[0];<br>
+   console.log(latitude, longitude);<br>
+   ```<br>
+   - `latitude` and `longitude` are clearer than `lat` and `lon`, especially if sharing with others.</p>
+<p>3. **Work with APIs That Use Unfriendly Naming**  <br>
+   - If you&#x27;re working with an API that has cryptic property names, renaming makes it easier to understand.  <br>
+   ```js<br>
+   const apiResponse = { usr_id: 123, usr_name: &quot;JohnDoe&quot; };<br>
+   const { usr_id: userId, usr_name: userName } = apiResponse;<br>
+   ```<br>
+   - Now, `userId` and `userName` make sense without altering the API response.</p>
+<p>### **Why Use Default Values When Destructuring?**  </p>
+<p>1. **Prevent `undefined` Errors**  <br>
+   - If a property is missing, trying to access it normally would return `undefined`, which can cause issues.  <br>
+   ```js<br>
+   const user = { name: &quot;Alice&quot; };<br>
+   const { age = 30 } = user; // Default age to 30 if missing<br>
+   console.log(age); // 30<br>
+   ```<br>
+   - Without this, `age` would be `undefined`, which could break calculations like `age + 5`.</p>
+<p>2. **Ensure Function Parameters Have Safe Defaults**  <br>
+   - When destructuring function parameters, default values prevent errors if arguments are missing.  <br>
+   ```js<br>
+   function greet({ name = &quot;Guest&quot; }) {<br>
+       console.log(`Hello, ${name}!`);<br>
+   }</p>
+<p>   greet({ name: &quot;Alice&quot; }); // &quot;Hello, Alice!&quot;<br>
+   greet({}); // &quot;Hello, Guest!&quot; (default used)<br>
+   ```<br>
+   - This avoids needing `if (!name) { name = &quot;Guest&quot;; }` checks.</p>
+<p>3. **Handle Incomplete API Responses**  <br>
+   - APIs often return objects with missing data. Default values prevent crashes.  <br>
+   ```js<br>
+   const apiData = { city: &quot;New York&quot; }; // Missing &quot;country&quot;<br>
+   const { city, country = &quot;Unknown&quot; } = apiData;<br>
+   console.log(city, country); // &quot;New York Unknown&quot;<br>
+   ```<br>
+   - Without a default, `country` would be `undefined`.</p>
+<p>4. **Improve Code Safety &amp; Reduce Edge Cases**  <br>
+   - Setting default values ensures that even when the structure changes, the code won’t break.  <br>
+   ```js<br>
+   const { lat = 0, lon = 0 } = locationData;<br>
+   ```<br>
+   - This guarantees `lat` and `lon` always have a number, even if `locationData` is missing them.</p>
+<p>### **Summary**  <br>
+| Feature | Why Use It? |<br>
+|---------|------------|<br>
+| **Renaming Variables** | Avoid conflicts, improve readability, deal with API naming |<br>
+| **Default Values** | Prevent `undefined` errors, set function defaults, handle missing data, improve safety |</p>
+<p>Both techniques **make destructuring more robust, readable, and error-proof**, which is why they’re commonly used in real-world applications. 🚀</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>are there other things I can do beyond those two when destructuring?</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>Yes! Beyond renaming variables and setting default values, there are **several advanced techniques** you can use with destructuring. Here are a few:  </p>
+<p>### **1️⃣ Nested Destructuring**  <br>
+- Extract values from **deeply nested** objects in one step.  <br>
+```js<br>
+const user = {<br>
+    name: &quot;Alice&quot;,<br>
+    location: {<br>
+        city: &quot;New York&quot;,<br>
+        country: &quot;USA&quot;<br>
+    }<br>
+};</p>
+<p>// Extract city and country directly<br>
+const { location: { city, country } } = user;</p>
+<p>console.log(city);    // &quot;New York&quot;<br>
+console.log(country); // &quot;USA&quot;<br>
+```<br>
+- The outer `location` property is not stored as a variable—just `city` and `country`.  </p>
+<p>### **2️⃣ Destructuring in Function Parameters**  <br>
+- Instead of passing an entire object and accessing properties inside the function, destructure **directly in the parameter list**.  <br>
+```js<br>
+function greet({ name, age = 25 }) {<br>
+    console.log(`Hello, ${name}! You are ${age} years old.`);<br>
+}</p>
+<p>greet({ name: &quot;Alice&quot;, age: 30 }); // &quot;Hello, Alice! You are 30 years old.&quot;<br>
+greet({ name: &quot;Bob&quot; });            // &quot;Hello, Bob! You are 25 years old.&quot; (default used)<br>
+```<br>
+- This makes functions **more concise** and sets default values at the same time.</p>
+<p>---</p>
+<p>### **3️⃣ Destructuring with Arrays**  <br>
+- Extract elements **in order** instead of by property name.  <br>
+```js<br>
+const numbers = [10, 20, 30];</p>
+<p>// Get the first two numbers<br>
+const [first, second] = numbers;</p>
+<p>console.log(first);  // 10<br>
+console.log(second); // 20<br>
+```<br>
+- You can **skip elements** by leaving empty commas:  <br>
+```js<br>
+const [first, , third] = numbers;<br>
+console.log(third); // 30<br>
+```</p>
+<p>---</p>
+<p>### **4️⃣ Rest Pattern (`...rest`)**  <br>
+- Collect remaining properties or elements into a new variable.  <br>
+```js<br>
+const person = { name: &quot;Alice&quot;, age: 30, job: &quot;Engineer&quot; };</p>
+<p>// Extract name, collect the rest in &quot;details&quot;<br>
+const { name, ...details } = person;</p>
+<p>console.log(name);    // &quot;Alice&quot;<br>
+console.log(details); // { age: 30, job: &quot;Engineer&quot; }<br>
+```<br>
+- Works with arrays too:  <br>
+```js<br>
+const colors = [&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;, &quot;yellow&quot;];</p>
+<p>const [first, ...rest] = colors;</p>
+<p>console.log(first); // &quot;red&quot;<br>
+console.log(rest);  // [&quot;blue&quot;, &quot;green&quot;, &quot;yellow&quot;]<br>
+```<br>
+- Useful when you want to extract key info but **keep the remaining data**.</p>
+<p>---</p>
+<p>### **5️⃣ Swapping Variables Easily**  <br>
+- Swap two variables **without needing a temporary variable**.  <br>
+```js<br>
+let a = 1, b = 2;</p>
+<p>[a, b] = [b, a]; // Swap</p>
+<p>console.log(a); // 2<br>
+console.log(b); // 1<br>
+```<br>
+- This is **cleaner** than using a temp variable like `let temp = a;`.</p>
+<p>---</p>
+<p>### **6️⃣ Destructuring with Default + Renaming + Nested Combined**  <br>
+- You can **combine multiple destructuring features** in one step!  <br>
+```js<br>
+const user = {<br>
+    id: 1,<br>
+    info: { fullName: &quot;Alice Wonderland&quot;, age: 30 }<br>
+};</p>
+<p>// Extract and rename with a default value<br>
+const { id, info: { fullName: name, age = 25 } } = user;</p>
+<p>console.log(id);   // 1<br>
+console.log(name); // &quot;Alice Wonderland&quot;<br>
+console.log(age);  // 30 (from object, not the default)<br>
+```</p>
+<p>---</p>
+<p>### **7️⃣ Using Destructuring with `map()` or Iteration**  <br>
+- Destructuring is **super useful** when working with arrays of objects.  <br>
+```js<br>
+const users = [<br>
+    { id: 1, name: &quot;Alice&quot; },<br>
+    { id: 2, name: &quot;Bob&quot; }<br>
+];</p>
+<p>// Destructure inside `.map()`<br>
+const names = users.map(({ name }) =&gt; name);</p>
+<p>console.log(names); // [&quot;Alice&quot;, &quot;Bob&quot;]<br>
+```<br>
+- Instead of `user.name`, you extract `name` directly.</p>
+<p>---</p>
+<p>### **Summary Table**  <br>
+| Technique | Example | Use Case |<br>
+|-----------|---------|----------|<br>
+| **Nested Destructuring** | `{ location: { city } } = obj` | Extract from deep objects |<br>
+| **Destructuring in Function Params** | `function({ name })` | Cleaner function calls |<br>
+| **Array Destructuring** | `[first, second] = arr` | Get elements in order |<br>
+| **Rest Pattern (`...rest`)** | `{ first, ...rest }` | Capture remaining values |<br>
+| **Swapping Variables** | `[a, b] = [b, a]` | Swap without temp vars |<br>
+| **Combining Multiple Techniques** | `{ name: fullName = &quot;Guest&quot; }` | Default + Rename + Nested |<br>
+| **Using with Iteration (`map()`)** | `users.map(({ name }) =&gt; name)` | Work with object arrays |</p>
+<p>---</p>
+<p>### **Final Thoughts**  <br>
+Destructuring isn’t just about extracting data—it makes **code more readable, avoids redundancy, and improves efficiency**. Let me know if you want examples of any technique in more depth! 🚀</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>For template literals I keep thinking and hearing &quot;temperate literals&quot; because they are controlled by where they point, lol.</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>Haha, that’s actually a pretty clever way to think about them! &quot;Temperate&quot; as in **they adjust based on what they reference**—kind of like how template literals adapt their output depending on embedded expressions. 🌡️➡️🎯  </p>
+<p>It’s funny how our brains latch onto little quirks like that. If it helps you remember, roll with it! Maybe even picture a thermometer that changes depending on where it’s pointed, just like a template literal adjusts based on its variables. 😆</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>okay, so I gotta start brainstorming a capstone project.<br>
+~stock market scenario adjuster?<br>
+~API dissector?<br>
+Trying to think of some other ideas.</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>Nice, a capstone project! The **stock market scenario adjuster** and **API dissector** both sound solid—one is data-heavy, and the other is developer-focused. Here are some more ideas that might fit your interests:  </p>
+<p>### **Data &amp; Analysis Focused**  <br>
+- **Game Loot Drop Simulator** – Simulate randomized loot drops using real game mechanics from DDO or another game. Could include rarity percentages, expected value, and a way to tweak drop rates.  <br>
+- **MAME Game Metadata Analyzer** – A tool that parses and displays metadata from your MAME collection, like release years, genres, or playtime tracking.  <br>
+- **YouTube Video Analyzer** – A simple web tool that lets you paste a YouTube link and extracts key metadata, such as duration, tags, and subtitles.  </p>
+<p>### **API &amp; Development-Focused**  <br>
+- **API Playground** – A tool that lets users test API requests and responses in a structured UI (like a lightweight Postman but targeted for a niche purpose).  <br>
+- **AI Prompt Optimizer** – A tool where users type a question or prompt, and it suggests refinements based on context (e.g., making AI-generated images more detailed).  <br>
+- **&quot;What Tech Is This?&quot;** – A browser extension or web app that detects and identifies front-end technologies when you visit a website.  </p>
+<p>### **Miscellaneous &amp; Fun**  <br>
+- **Dynamic Music Playlist Builder** – A tool that suggests or reorganizes playlists based on mood, theme, or BPM, kind of like your idea with structuring song lists like *The Downward Spiral*.  <br>
+- **Escape Room Puzzle Generator** – Generates random digital escape room puzzles based on different themes.  </p>
+<p>Do any of these stand out to you? Or do you want to refine one of your initial ideas?</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>Yeah, *fourties* isn&#x27;t a correct spelling—it&#x27;s **forties** (just like twenties, thirties, fifties, etc.).  </p>
+<p>The reason? In most English words ending in *-y*, when pluralized, the *y* changes to *ies* **only if it follows a consonant** (e.g., &quot;party&quot; → &quot;parties&quot;). But &quot;forty&quot; is an oddball because it drops the *u* from &quot;four&quot; (unlike fourteen, fourth, etc.), so it just becomes **forties** instead of *fourties*.  </p>
+<p>It *looks* like it should be *fourties*, but nope! English is weird. 😆</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>is it wrong to spell it &#x27;fourties&#x27;?</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>for my class, we are reviewing for the opportunity to take for free the CIW javascript specialist 2.0 exam. The instructor says it&#x27;s comparable to CompTIA cert in renown for IT. Is that true?</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>The **CIW JavaScript Specialist 2.0** certification is a vendor-neutral credential focusing on JavaScript programming skills. While it holds value in the web development community, its recognition and scope differ from that of CompTIA certifications.</p>
+<p>**CompTIA** offers a range of certifications, such as A+, Network+, and Security+, which are widely recognized across various IT domains, including networking, security, and support. These certifications are often considered foundational and are frequently listed as requirements for IT support roles. citeturn0search5</p>
+<p>In contrast, **CIW certifications** are more specialized, concentrating on web technologies and development. They are acknowledged within specific niches, particularly among web professionals. For instance, the CIW JavaScript Specialist certification validates skills in client-side scripting and is suitable for roles like web developers and UI/UX designers. citeturn0search8</p>
+<p>While both certifications are vendor-neutral and respected in their respective areas, CompTIA certifications generally have broader industry recognition across multiple IT fields. CIW certifications, including the JavaScript Specialist, are esteemed within the web development sector but may not carry the same weight in other IT disciplines.</p>
+<p>In summary, the CIW JavaScript Specialist certification is valuable for demonstrating expertise in JavaScript and web development. However, its recognition is more specialized compared to the broader acknowledgment that CompTIA certifications receive across the IT industry. </p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>Yes, **CIW (Certified Internet Web Professional)** certifications are well-regarded within web development and design circles. They hold particular value for professionals focusing on **web technologies, front-end development, and scripting languages like JavaScript**.  </p>
+<p>However, their recognition isn&#x27;t as universal as certifications from **CompTIA, AWS, or Microsoft**, which cover broader IT domains. CIW certifications are more **specialized and niche**, making them useful if you&#x27;re targeting **web development, JavaScript programming, or related roles**.  </p>
+<p>If you&#x27;re looking to **strengthen your resume in front-end or full-stack development**, the **CIW JavaScript Specialist 2.0** cert can be a great addition, particularly **for junior-level developers or those transitioning into web development**. However, **experience and portfolio projects** will still carry more weight in hiring decisions than just a certification.</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>I mean, in their own respective sense, is CIW well regarded?</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>Yeah! Your capstone is a great opportunity to build something practical and **showcase your skills**. If you&#x27;re leaning toward **an API dissector, a stock market scenario adjuster, or something else web-related**, it could tie in nicely with the CIW JavaScript cert.  </p>
+<p>Do you want your capstone to be more **problem-solving-oriented**, or something that **streamlines existing tasks**? That might help narrow down your ideas.</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>Can&#x27;t wait to consider my capstone then!</p>
+  </article>
+
+  <div class="tags tags-bottom"><a class="tag" href="/logs/tags/coding-spiral.html">#coding-spiral</a> <a class="tag" href="/logs/tags/nerdlore.html">#nerdlore</a> <a class="tag" href="/logs/tags/tech-thoughts.html">#tech-thoughts</a></div>
+  <div class="nav"><a href="/logs/index.html">Back to logs</a></div>
+</section><!-- PAGE_CONTENT_END -->
+            <div class="footer-note">
+              Filters &amp; theme are remembered locally in your browser only.
+              <button id="clearLocal" class="clear-local" type="button">Clear local data</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
