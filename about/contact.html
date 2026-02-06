@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Contact</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/styles/main.css" />
+
+    <script defer src="https://threadedminds-umami.fly.dev/script.js" data-website-id="dcd76c73-ec69-4e45-8ca3-22ae7798086b"></script>
+    <script src="/scripts/main.js" defer></script>
+    <script src="/scripts/reading-progress.js" defer></script>
+  </head>
+
+  <body>
+    <header class="top-bar site-header">
+  <a href="/" class="site-home-link">
+    <div class="logo-box">
+      <span>Logo?</span>
+  </div>
+  <div class="title-block">
+    <div class="title-row">
+      <div>
+        <h1>My chat with mychat</h1>
+        <div class="subtitle">a personal archive of human–AI conversations</div>
+      </div>
+</a>
+      <div class="header-actions">
+        <div class="theme-switcher">
+          <span>Theme</span>
+          <select id="themeSelect" aria-label="Choose theme">
+            <option value="dark">Dark</option>
+            <option value="light">Light</option>
+            <option value="terminal">Terminal</option>
+          </select>
+        </div>
+
+        <nav class="global-entry-nav">
+          <a href="/logs/" class="back-to-logs">← Back to logs</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+    <div class="layout">
+      <div id="tmSidebar"></div>
+      <div class="main-column">
+
+        <!-- PAGE_CONTENT_START -->
+        <article class="about-content">
+          <h1>Contact</h1>
+
+          <section class="latest-card">
+            <div class="simple-content">
+              <p>
+                If you’re sending feedback about a specific entry, include the entry title or URL.
+              </p>
+
+              <h2>Email</h2>
+              <p>
+                <a href="mailto:contact@mychatwithmychat.com">contact@mychatwithmychat.com</a>
+              </p>
+
+              <hr />
+
+              <h2>Message</h2>
+              <p>
+            To send a message straight to User.
+              </p>
+
+<form
+  class="contact-form"
+  method="POST"
+  action="https://usebasin.com/f/5b3b93cfa9a0"
+  accept-charset="UTF-8"
+>
+
+  <!-- meta / control fields -->
+  <input type="hidden" name="_redirect" value="/contact/thanks/">
+  <input type="hidden" name="_subject" value="MyChat contact form">
+
+  <!-- honeypot -->
+  <input type="text" name="company" class="hp" tabindex="-1" autocomplete="off">
+
+  <!-- actual fields -->
+  <div class="form-row">
+    <label for="message">Message:</label>
+    <textarea id="message" name="message" rows="6" required></textarea>
+  </div>
+
+  <div class="form-row">
+    <label for="name">Name:</label>
+    <input id="name" name="name" required>
+  </div>
+
+  <div class="form-row">
+    <label for="email">Email (optional):</label>
+    <input id="email" name="email" type="email">
+  </div>
+
+  <button type="submit">Send</button>
+</form>
+
+            </div>
+          </section>
+        </article>
+        <!-- PAGE_CONTENT_END -->
+
+        <div class="footer-note">
+          Filters &amp; theme are remembered locally in your browser only.
+          <button id="clearLocal" class="clear-local" type="button">Clear local data</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
