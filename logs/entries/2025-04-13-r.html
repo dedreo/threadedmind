@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Icepick layers, finding a base</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/styles/main.css" />
+    <script defer src="https://threadedminds-umami.fly.dev/script.js" data-website-id="dcd76c73-ec69-4e45-8ca3-22ae7798086b"></script>
+    <script src="/scripts/main.js" defer></script>
+    <script src="/scripts/reading-progress.js" defer></script>
+
+  </head>
+  <body>
+<header class="top-bar site-header">
+  <a href="/" class="site-home-link">
+    <div class="logo-box">
+      <span>Logo?</span>
+  </div>
+  <div class="title-block">
+    <div class="title-row">
+      <div>
+        <h1>My chat with mychat</h1>
+        <div class="subtitle">a personal archive of human–AI conversations</div>
+      </div>
+</a>
+      <div class="header-actions">
+        <div class="theme-switcher">
+          <span>Theme</span>
+          <select id="themeSelect" aria-label="Choose theme">
+            <option value="dark">Dark</option>
+            <option value="light">Light</option>
+            <option value="terminal">Terminal</option>
+          </select>
+        </div>
+
+        <nav class="global-entry-nav">
+          <a href="/logs/" class="back-to-logs">← Back to logs</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+        <div class="layout">
+          <div id="tmSidebar"></div>
+          <div class="main-column">
+
+<!-- PAGE_CONTENT_START --><section class="entry" data-entry-eid="2025-04-13-r">
+  <h1>Icepick layers, finding a base</h1>
+  <div class="meta">
+    <div class="meta-top">
+      <div class="date">2025-04-13</div>
+      <div class="pills"><span class='pill'>words: 2619</span></div>
+    </div>
+  </div>
+
+  <article class="body">
+    <p># Icepick layers, finding a base</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>So now I&#x27;m mentally thinking about how to partition for icepick. Like the tetris game-engine part, then the graphics, and then audio (and the audio &#x27;engine&#x27; will be practically stand-alone so it can be re-used), etc.</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>That’s exactly the right mindset—modular design will save your sanity later. Partitioning *Icepick* into self-contained chunks will make it way easier to build, tweak, or even gut and upgrade parts without a total meltdown. Here&#x27;s a basic layout idea based on what you’ve mentioned and some game dev conventions:</p>
+<p>---</p>
+<p>### 🔷 **Core Modules for Icepick**</p>
+<p>#### 1. **Game Engine Core**<br>
+Handles the logic and rules of the game.<br>
+- Board/grid state<br>
+- Block logic (movement, rotation, placement)<br>
+- Line detection and clearing<br>
+- Blob interaction logic (capture, squish, powers)<br>
+- Game loop and timing</p>
+<p>---</p>
+<p>#### 2. **Graphics Layer**<br>
+Handles visual representation.<br>
+- Sprite loading and rendering<br>
+- Animations (squish, capture, line clear, etc.)<br>
+- UI elements (score, power-ups, blobs captured)<br>
+- Screen transitions and splash screen (eventually)</p>
+<p>---</p>
+<p>#### 3. **Audio System (Reusable Module)**<br>
+Handles all sound and music.<br>
+- SFX playback (squish, line clear, “Oh no!” Lemmings sound, etc.)<br>
+- Background music handling<br>
+- Volume control and mute toggles<br>
+- Possibly queuing &amp; overlapping sounds<br>
+- Sound channel layering (fx vs bgm)</p>
+<p>---</p>
+<p>#### 4. **Input Manager**<br>
+Translates player actions into commands.<br>
+- Keyboard/controller bindings<br>
+- Configurable keys (eventually)<br>
+- Multiplayer inputs support</p>
+<p>---</p>
+<p>#### 5. **State Manager**<br>
+Keeps track of which part of the game is active.<br>
+- Main menu<br>
+- In-game<br>
+- Pause/menu screen<br>
+- Game over screen<br>
+- Multiplayer lobby (down the road)</p>
+<p>---</p>
+<p>#### 6. **Blob Logic &amp; Manager**<br>
+This can be a dedicated module to handle:<br>
+- Blob spawning<br>
+- Blob pathing/behavior<br>
+- Blob interactions (with blocks, environment, each other)<br>
+- Power-up effects and cooldowns</p>
+<p>---</p>
+<p>#### 7. **Utility Layer**<br>
+Little helpers that smooth everything out:<br>
+- Collision detection helpers<br>
+- Timer utilities<br>
+- Sprite sheet slicing<br>
+- Configs (difficulty, visuals, sound levels, etc.)</p>
+<p>---</p>
+<p>### 💾 File Structure Suggestion (Later down the road)<br>
+```plaintext<br>
+/src<br>
+  /core<br>
+    GameLoop.js<br>
+    GridManager.js<br>
+    BlockManager.js<br>
+    LineChecker.js<br>
+  /blobs<br>
+    BlobManager.js<br>
+    BlobTypes.js<br>
+    PowerEffects.js<br>
+  /graphics<br>
+    Renderer.js<br>
+    SpriteLoader.js<br>
+    Animations.js<br>
+  /audio<br>
+    SoundManager.js<br>
+    SFX.js<br>
+    MusicPlayer.js<br>
+  /ui<br>
+    ScoreDisplay.js<br>
+    PowerupBar.js<br>
+    ToggleButtons.js<br>
+  /input<br>
+    InputHandler.js<br>
+    ControlsConfig.js<br>
+  /states<br>
+    MainMenu.js<br>
+    GameScreen.js<br>
+    GameOverScreen.js<br>
+  /utils<br>
+    Timer.js<br>
+    CollisionHelpers.js<br>
+    Config.js<br>
+```</p>
+<p>---</p>
+<p>Once you&#x27;ve got basic gameplay running, building on top of that will be way smoother. What part do you think you’ll tackle *after* you get the initial graphics and sprites set up? Game logic or blob behavior?</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>well this weekend, if i want to change flavors, I was thinking of deciding and making/importing (after finding) what build to start the core tetris part (and if importing, looking it over to understand it). Right off the bat of course I&#x27;ll have placeholders for things not yet made; but since it&#x27;s so pivotal to core structure testing, I suppose I&#x27;ll need a splash-screen (just without the splash, yet) that will move onto the game itself.</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>Yeah, that’s a perfect weekend goal—*foundational and forward-thinking* without being overwhelming. Here’s a good rough outline for what that weekend sprint could look like, based on what you just said:</p>
+<p>---</p>
+<p>### 🔧 **Weekend Sprint Plan: Core Kickoff + Structure Check**</p>
+<p>#### ✅ **1. Choose Your Base Tetris Build**<br>
+Pick one:<br>
+- **Custom from scratch** (most control, more time)<br>
+- **Fork from open-source project** (quicker start, still modifiable)</p>
+<p>If you go with importing:<br>
+- Skim the file structure and see how well it&#x27;s organized<br>
+- Look for `draw()`, `update()`, or `tick()` loop—usually tells you where the game logic is happening<br>
+- Note how pieces are stored/defined (matrix, objects, arrays, etc.)</p>
+<p>---</p>
+<p>#### 🟪 **2. Build a Barebones Splash-Screen Handler**<br>
+Even without graphics, get the structure in place:<br>
+- A “splash” state or screen component that just says “Press Start” or something minimal<br>
+- On keypress or click, it transitions into the game state<br>
+- Sets up the architecture for future menu/screens later</p>
+<p>```js<br>
+// pseudo-js logic<br>
+if (gameState === &#x27;splash&#x27;) {<br>
+  drawSplash();<br>
+  if (startKeyPressed) gameState = &#x27;playing&#x27;;<br>
+}<br>
+```</p>
+<p>---</p>
+<p>#### 🔲 **3. Set Up Placeholder Assets**<br>
+- Placeholder for background<br>
+- Placeholder sprites for blocks (letters, colored squares, emojis, whatever)<br>
+- Placeholder sounds (a basic blip for move/rotate/drop)</p>
+<p>This gives you feedback that your audio and graphics layers are *hooked up*, even if they’re not pretty yet.</p>
+<p>---</p>
+<p>#### 💡 **4. Add a Dev Overlay (Optional but Nice)**<br>
+- Frame rate counter<br>
+- Current state output<br>
+- Key pressed debug<br>
+- Maybe a blob tracker: if you spawn one blob manually, see that it exists and follows a loop</p>
+<p>This can help *massively* when things break.</p>
+<p>---</p>
+<p>#### 🧠 **5. Minimal Blob Engine Hook**<br>
+- Just set up the manager object/module that would *handle* blobs<br>
+- Have it spawn a single test blob on game start<br>
+- Draw it as a different colored block or emoji<br>
+- Give it a wiggle or a float path, even if static and repeating for now</p>
+<p>---</p>
+<p>This weekend plan sets up the groundwork *without* forcing a full build, which is good since this’ll likely evolve as you go. Wanna toss me some links if you find a few Tetris bases you’re looking at? I can help you evaluate which might be best for the *Icepick* twist.</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>and at some point at the dev overlay, be able to summon blobs, and specifically, for testing.</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>Oh hell yeah—that’s the dev life right there. Having a test/dev overlay where you can *manually summon blobs* for debugging is *super clutch*, especially once different blob types and behaviors start piling up.</p>
+<p>Here’s how you could approach that, either in phases or all at once:</p>
+<p>---</p>
+<p>### 🧪 Dev Overlay Blob Summoner – Concept</p>
+<p>#### 🔧 Phase 1: Basic Toggle Panel<br>
+Add a small keyboard toggle (`~`, `Tab`, or `D` for &quot;Dev&quot;) to open a floating panel.</p>
+<p>```js<br>
+if (key === &#x27;D&#x27;) {<br>
+  devOverlayVisible = !devOverlayVisible;<br>
+}<br>
+```</p>
+<p>This panel could be:<br>
+- A simple overlay with a few buttons (if HTML overlayed on canvas)<br>
+- Or in-canvas rendered UI, like rectangles with text you click on</p>
+<p>#### 🧃 Phase 2: Blob Spawner Controls<br>
+Inside the dev overlay:<br>
+- Dropdown or radio buttons to select blob type<br>
+- “Spawn” button or keybind (e.g., `B` for blob, `Shift+B` for special blob)<br>
+- Optional: Position input or “click on canvas” to choose where</p>
+<p>Example controls:<br>
+```js<br>
+[Blob Type:] (Normal) (Static) (Icy) (Clear)<br>
+[Spawn at Random] [Spawn at X,Y] [Click-To-Place Mode]<br>
+```</p>
+<p>#### 🧠 Phase 3: Blob Debug Output<br>
+In the overlay or bottom corner of the screen, you could show info like:<br>
+- Total blobs on screen<br>
+- Coordinates of each blob<br>
+- Current state (idle, moving, trapped, etc.)<br>
+- Last interaction (e.g., &quot;Squished by L-block&quot;)</p>
+<p>---</p>
+<p>### 🧱 Implementation Tip<br>
+For architecture:<br>
+- Make a `BlobManager.testSpawnBlob(type, x, y)` method<br>
+- Have dev overlay just call that</p>
+<p>That way, the actual spawn logic stays clean, reusable, and not tied to the UI directly.</p>
+<p>---</p>
+<p>Let me know if you want a quick sketch of a canvas+HTML hybrid overlay or if you&#x27;re planning to keep everything drawn within the canvas layer itself. Either way, this&#x27;ll save you from 80% of the “why isn’t this working?” blob problems later down the line.</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>canvas?</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>Yep! Since *Icepick* sounds like it&#x27;ll be heavily visual, especially with blobs, animated tetrominoes, and squishy effects, you’re likely gonna be rendering it on an HTML `&lt;canvas&gt;` element (or similar if you&#x27;re using something like PIXI.js, Phaser, etc.).</p>
+<p>### So what is a canvas?</p>
+<p>The HTML `&lt;canvas&gt;` is basically a blank 2D (or 3D) drawing surface. You draw everything on it yourself—pixels, lines, shapes, images, animations, etc.—which is why it&#x27;s great for games.</p>
+<p>---</p>
+<p>### Why use canvas for Icepick?</p>
+<p>Here’s why it fits:<br>
+- Smooth animations (like blobs squirming or being squished)<br>
+- Frame-by-frame control (perfect for precise falling blocks and timing)<br>
+- Layered effects (like frozen blobs, squishy trails, etc.)<br>
+- You control *everything*—great for pixel-precise retro looks</p>
+<p>---</p>
+<p>### So when I said “overlay in canvas vs HTML”...</p>
+<p>You’ve got two ways to handle dev UI like the blob spawner:</p>
+<p>#### Option A: Render Dev UI *inside* the canvas<br>
+- Everything—game, UI, debug—drawn to canvas via code<br>
+- Good if you want to keep fullscreen game aesthetics<br>
+- More complex for interactive UI (buttons, dropdowns)</p>
+<p>#### Option B: Overlay HTML UI on top of canvas<br>
+- Canvas handles just game visuals<br>
+- A React/Vite-like app controls UI with regular HTML + CSS<br>
+- Easy to click buttons, input text, etc.</p>
+<p>Example:<br>
+```html<br>
+&lt;div id=&quot;game-wrapper&quot;&gt;<br>
+  &lt;canvas id=&quot;game-canvas&quot;&gt;&lt;/canvas&gt;<br>
+  &lt;div id=&quot;dev-ui&quot; style=&quot;position: absolute; top: 0; left: 0;&quot;&gt;<br>
+  &lt;/div&gt;<br>
+&lt;/div&gt;<br>
+```</p>
+<p>This way, you can spawn blobs by clicking a button or picking options from a dropdown, *without* needing to code a custom UI renderer inside your canvas.</p>
+<p>---</p>
+<p>Want to stick to canvas-only aesthetics? Or thinking hybrid (canvas + HTML overlay)? Either path’s cool, just changes how you structure your inputs and debug tools.</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>ok, that&#x27;s going to be a real big learning bit for me, lol.<br>
+From appearences, I&#x27;d want to go A, since most buttons and interactives (other than the blocks and powerups) will be in static menus, and that should be easy enough, right?</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>Yep—if your menus and buttons are mostly **static (like pause menus, settings, etc.)** and you want them to feel like part of the game world (same aesthetic, same retro pixel vibe), **Option A (everything inside canvas)** is totally doable—and a fun rabbit hole to learn!</p>
+<p>It’s a *bit* more work up front, but honestly really satisfying once you get the hang of it. Here&#x27;s how you can think of it:</p>
+<p>---</p>
+<p>### 🎮 Canvas-Only UI Breakdown</p>
+<p>#### 🔲 Static Menus (like Start, Pause, Settings)<br>
+- Draw menu boxes manually on the canvas using `ctx.fillRect`, `ctx.strokeRect`, or images<br>
+- Use pixel fonts or image-based fonts for retro text<br>
+- Position &quot;buttons&quot; as rectangular areas</p>
+<p>#### 🖱 Clickable Buttons<br>
+- Listen to mouse events (`mousedown`, `mouseup`, etc.)<br>
+- Check if the mouse click lands inside a button’s coordinates<br>
+- Trigger whatever function is tied to that button</p>
+<p>```js<br>
+canvas.addEventListener(&quot;mousedown&quot;, (e) =&gt; {<br>
+  const { offsetX, offsetY } = e;<br>
+  if (offsetX &gt;= button.x &amp;&amp; offsetX &lt;= button.x + button.width &amp;&amp;<br>
+      offsetY &gt;= button.y &amp;&amp; offsetY &lt;= button.y + button.height) {<br>
+    handleClick();<br>
+  }<br>
+});<br>
+```</p>
+<p>#### 🧪 Dev Tools (Summon blob button, etc.)<br>
+- Just render a little box somewhere off to the side with &quot;Spawn Blob&quot; text<br>
+- Same interaction logic, just used for debug</p>
+<p>---</p>
+<p>### ✅ Pros of Going All-Canvas<br>
+- Full visual control (retro pixel menus? hell yeah)<br>
+- No CSS weirdness or browser quirks<br>
+- Looks unified—menus feel part of the game</p>
+<p>### ❗Gotchas<br>
+- More manual work for text/buttons/inputs<br>
+- Needs logic for hover/click states<br>
+- No built-in input boxes—if you ever need player text input, you’ll have to do tricks like capturing text via hidden `&lt;input&gt;` and syncing it</p>
+<p>---</p>
+<p>### 💡 Pro Tip<br>
+You can still **mock up your UI on paper or in a pixel editor** first. Plan the spacing, sizes, and design—then recreate it in canvas. It&#x27;s kinda like doing pixel art UI.</p>
+<p>---</p>
+<p>If you ever feel stuck on how to build the canvas menu UI later, I can help you write a modular UI system or show a sample one! You&#x27;re definitely capable, and you already think in organized pieces (like how you&#x27;re splitting Icepick into audio/game/graphics modules), which is a perfect mindset for canvas-driven games.</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>sounds kind of ok, but then again, if I were to have a different &#x27;mode&#x27; auto-load for phones, where it will have to have like arrow keys, would that be an extra hurdle doing just canvas?</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>💯 Great foresight—yes, **mobile controls** (like on-screen arrow keys or touch buttons) are absolutely doable in canvas, but they do add some complexity. Here’s the real talk:</p>
+<p>---</p>
+<p>### 🟨 Mobile Touch Controls in Canvas: The Tradeoffs</p>
+<p>#### ✅ Pros:<br>
+- Still looks unified and stylized (your pixel UI stays consistent)<br>
+- You can position custom d-pad / buttons wherever<br>
+- You have control over size, spacing, and feel<br>
+- Easy to detect `touchstart`, `touchend`, etc., just like `mousedown`</p>
+<p>#### ❗Cons:<br>
+- **You have to write the entire input logic manually** (detection, size zones, touch vs drag, responsiveness)<br>
+- **Responsive scaling gets tricky**—you’ll want to account for device pixel ratio and canvas scaling so UI doesn&#x27;t get too tiny or misaligned<br>
+- **No native feel**—HTML buttons are easier to make accessible and responsive by default</p>
+<p>---</p>
+<p>### 💡 Hybrid Approach?</p>
+<p>You *could* do a hybrid system where:</p>
+<p>- The **core game** and all visual UI is canvas<br>
+- But **mobile touch controls** (like arrow keys, pause button) are done with **HTML absolutely-positioned on top** of the canvas</p>
+<p>That gives you:<br>
+- Easy dev for mobile buttons<br>
+- Fewer headaches with touch zones<br>
+- Still keeps your aesthetic—if you style the HTML buttons to look pixel-y with custom fonts and box shadows or even spritesheets</p>
+<p>---</p>
+<p>### Example Setup:<br>
+```html<br>
+&lt;div class=&quot;game-wrapper&quot;&gt;<br>
+  &lt;canvas id=&quot;gameCanvas&quot;&gt;&lt;/canvas&gt;</p>
+<p>  &lt;div class=&quot;mobile-controls&quot;&gt;<br>
+    &lt;button id=&quot;left&quot;&gt;◀&lt;/button&gt;<br>
+    &lt;button id=&quot;right&quot;&gt;▶&lt;/button&gt;<br>
+    &lt;button id=&quot;rotate&quot;&gt;🔄&lt;/button&gt;<br>
+    &lt;button id=&quot;drop&quot;&gt;⬇&lt;/button&gt;<br>
+  &lt;/div&gt;<br>
+&lt;/div&gt;<br>
+```</p>
+<p>And style them:<br>
+```css<br>
+.mobile-controls {<br>
+  position: absolute;<br>
+  bottom: 20px;<br>
+  width: 100%;<br>
+  display: flex;<br>
+  justify-content: center;<br>
+  gap: 1rem;<br>
+}<br>
+```</p>
+<p>Then wire up the buttons to emit the same key-style inputs as keyboard keys:<br>
+```js<br>
+document.getElementById(&quot;left&quot;).addEventListener(&quot;click&quot;, () =&gt; {<br>
+  handleInput(&quot;ArrowLeft&quot;);<br>
+});<br>
+```</p>
+<p>---</p>
+<p>### Verdict</p>
+<p>If you&#x27;re **targeting both desktop and mobile**, a hybrid approach is usually less stressful and faster to implement. You can always switch to full canvas later if you fall in love with it. 😄</p>
+<p>Want me to sketch out a basic canvas + HTML controls scaffolding?</p>
+<p class='utterance utterance-user'><span class='who'>User</span><br>and just like breaking down everything into modules, the phone variation screens will just be a redirect from auto-detect (or an option in case of failure on that front), to other screen formats, and still use all the same retrieval code for everything except the layout (and buttons, etc)</p>
+<p class='utterance utterance-assistant'><span class='who'>Assistant</span><br>Exactly right—that’s a **solid, modular mindset**. You&#x27;re basically talking about a responsive layout **controller layer** that routes to different UI modes (desktop vs phone), while sharing all the **core game logic** and **data systems** underneath. That’s clean architecture.</p>
+<p>Here’s how it naturally breaks down:</p>
+<p>---</p>
+<p>### 🧠 Shared Core Logic (All Screens Use These)<br>
+- Game engine (block physics, blob logic, timers)<br>
+- Game state (board, score, power-up queue)<br>
+- Input handlers (abstracted as &quot;actions&quot; rather than raw keys)<br>
+- Sound system (standalone module)<br>
+- Network logic (if any multiplayer or stats tracking)<br>
+- Asset manager (sprites, audio, fonts)</p>
+<p>---</p>
+<p>### 🎨 Presentation Layer: Two Modes</p>
+<p>#### 1. **Desktop View**<br>
+- Full canvas<br>
+- Optional debug/dev overlay<br>
+- Possibly keyboard only<br>
+- Big screen real estate</p>
+<p>#### 2. **Phone View**<br>
+- Canvas still used (or smaller canvas with HUD)<br>
+- Touch UI (onscreen buttons)<br>
+- Maybe simplified menus<br>
+- Auto-orientation lock (portrait or landscape)</p>
+<p>---</p>
+<p>### 🚀 Screen Selector System</p>
+<p>You can write a small auto-router like:</p>
+<p>```js<br>
+function isMobile() {<br>
+  return /Mobi|Android/i.test(navigator.userAgent);<br>
+}</p>
+<p>function initGame() {<br>
+  if (isMobile()) {<br>
+    loadMobileLayout(); // different HTML or dynamic styling<br>
+  } else {<br>
+    loadDesktopLayout();<br>
+  }</p>
+<p>  startGameEngine(); // always the same<br>
+}<br>
+```</p>
+<p>And maybe give users an option to toggle it manually if detection fails or they just prefer the other one.</p>
+<p>---</p>
+<p>### 🧩 Tip: Think in &quot;Renderers&quot;<br>
+If you abstract your **input**, **update**, and **render** logic, then your UI layer is just another renderer:</p>
+<p>```js<br>
+function render(state) {<br>
+  if (layout === &#x27;desktop&#x27;) {<br>
+    renderDesktopCanvas(state);<br>
+  } else {<br>
+    renderMobileCanvas(state);<br>
+    renderTouchUI(state);<br>
+  }<br>
+}<br>
+```</p>
+<p>That way you can test both modes easily, and everything “feels” modular even if the core is monolithic.</p>
+<p>---</p>
+<p>You’re totally on the right track—clean breaks between logic and presentation will keep “Icepick” super scalable and fun to work on. Want help prototyping that layout switcher or drawing up a little render flow chart?</p>
+  </article>
+
+  <div class="tags tags-bottom"><a class="tag" href="/logs/tags/ambient.html">#ambient</a> <a class="tag" href="/logs/tags/coding-spiral.html">#coding-spiral</a> <a class="tag" href="/logs/tags/tech-thoughts.html">#tech-thoughts</a></div>
+  <div class="nav"><a href="/logs/index.html">Back to logs</a> · <a href="/logs/entries/2025-04-13-q.html">← Prev</a> · <a href="/logs/entries/2025-04-13-s.html">Next →</a></div>
+</section><!-- PAGE_CONTENT_END -->
+            <div class="footer-note">
+              Filters &amp; theme are remembered locally in your browser only.
+              <button id="clearLocal" class="clear-local" type="button">Clear local data</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

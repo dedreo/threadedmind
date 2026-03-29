@@ -58,33 +58,83 @@ document.addEventListener("DOMContentLoaded", loadSidebar);
     document.querySelectorAll(".filter-checkbox")
   );
 
-  if (filterBoxes.length) {
-    try {
-      const savedFilters = JSON.parse(localStorage.getItem(FILTER_KEY));
-      if (savedFilters && typeof savedFilters === "object") {
-        filterBoxes.forEach((box) => {
-          const key = box.dataset.key;
-          if (key in savedFilters) {
-            box.checked = !!savedFilters[key];
-          }
-        });
-      }
-    } catch (e) {}
-
-    function saveFilters() {
-      const state = {};
+if (filterBoxes.length) {
+  try {
+    const savedFilters = JSON.parse(localStorage.getItem(FILTER_KEY));
+    if (savedFilters && typeof savedFilters === "object") {
       filterBoxes.forEach((box) => {
-        state[box.dataset.key] = box.checked;
+        const key = box.dataset.key;
+        if (key in savedFilters) {
+          box.checked = !!savedFilters[key];
+        }
       });
-      try {
-        localStorage.setItem(FILTER_KEY, JSON.stringify(state));
-      } catch (e) {}
     }
+  } catch (e) {}
 
+  function saveFilters() {
+    const state = {};
     filterBoxes.forEach((box) => {
-      box.addEventListener("change", saveFilters);
+      state[box.dataset.key] = box.checked;
+    });
+    try {
+      localStorage.setItem(FILTER_KEY, JSON.stringify(state));
+    } catch (e) {}
+  }
+
+  function applyLogFilters() {
+    const rows = Array.from(document.querySelectorAll(".logs-ledger .row"));
+    if (!rows.length) return;
+
+    const modeKeys = new Set(["core", "slice", "ambient", "checkpoint", "crux", "misc"]);
+
+    const checkedTags = filterBoxes
+      .filter(cb => cb.checked && !modeKeys.has(cb.dataset.key))
+      .map(cb => cb.dataset.key);
+
+    const checkedModes = filterBoxes
+      .filter(cb => cb.checked && modeKeys.has(cb.dataset.key))
+      .map(cb => cb.dataset.key);
+
+    rows.forEach((row) => {
+      const tags = (row.dataset.tags || "").split(/\s+/).filter(Boolean);
+      const modes = (row.dataset.modes || "").split(/\s+/).filter(Boolean);
+
+      const tagMatch =
+        checkedTags.length === 0 || checkedTags.some(t => tags.includes(t));
+
+      const modeMatch =
+        checkedModes.length === 0 || checkedModes.some(m => modes.includes(m));
+
+      row.hidden = !(tagMatch && modeMatch);
+    });
+
+    const monthRows = document.querySelectorAll(".month-row");
+
+    monthRows.forEach((month) => {
+      let next = month.nextElementSibling;
+      let visible = false;
+
+      while (next && !next.classList.contains("month-row")) {
+        if (!next.hidden) {
+          visible = true;
+          break;
+        }
+        next = next.nextElementSibling;
+      }
+
+      month.hidden = !visible;
     });
   }
+
+  filterBoxes.forEach((box) => {
+    box.addEventListener("change", () => {
+      saveFilters();
+      applyLogFilters();
+    });
+  });
+
+  applyLogFilters();
+}  
 
   // LATEST POST EXPAND/COLLAPSE (HOME)
   const latestBody = document.getElementById("latestBody");
