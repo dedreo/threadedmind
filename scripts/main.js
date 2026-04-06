@@ -52,90 +52,179 @@
 
 document.addEventListener("DOMContentLoaded", loadSidebar);
 
-
-  // FILTER CHECKBOXES (HOME PAGE)
-  const filterBoxes = Array.from(
+  // FILTERS (LOGS PAGE)
+  const tagFilterBoxes = Array.from(
     document.querySelectorAll(".filter-checkbox")
   );
 
-if (filterBoxes.length) {
-  try {
-    const savedFilters = JSON.parse(localStorage.getItem(FILTER_KEY));
-    if (savedFilters && typeof savedFilters === "object") {
-      filterBoxes.forEach((box) => {
-        const key = box.dataset.key;
-        if (key in savedFilters) {
-          box.checked = !!savedFilters[key];
+  const modeButtons = Array.from(
+    document.querySelectorAll(".mode-toggle")
+  );
+
+  const defaultTagFilterState = new Map(
+    tagFilterBoxes.map((box) => [box.dataset.key, box.checked])
+  );
+
+  const defaultModeState = new Map(
+    modeButtons.map((button) => [
+      button.dataset.mode,
+      button.classList.contains("is-active"),
+    ])
+  );
+
+  function setAllTagFilters(checked) {
+    tagFilterBoxes.forEach((box) => {
+      box.checked = checked;
+    });
+  }
+
+  function restoreDefaultTagFilters() {
+    tagFilterBoxes.forEach((box) => {
+      box.checked = defaultTagFilterState.get(box.dataset.key) ?? false;
+    });
+  }
+
+  function restoreDefaultModes() {
+    modeButtons.forEach((button) => {
+      const active = defaultModeState.get(button.dataset.mode) ?? true;
+      button.classList.toggle("is-active", active);
+      button.setAttribute("aria-pressed", active ? "true" : "false");
+    });
+  }
+
+  if (tagFilterBoxes.length || modeButtons.length) {
+    try {
+      const savedFilters = JSON.parse(localStorage.getItem(FILTER_KEY));
+      if (savedFilters && typeof savedFilters === "object") {
+        if (savedFilters.tags && typeof savedFilters.tags === "object") {
+          tagFilterBoxes.forEach((box) => {
+            const key = box.dataset.key;
+            if (key in savedFilters.tags) {
+              box.checked = !!savedFilters.tags[key];
+            }
+          });
         }
+
+        if (savedFilters.modes && typeof savedFilters.modes === "object") {
+          modeButtons.forEach((button) => {
+            const mode = button.dataset.mode;
+            const active =
+              mode in savedFilters.modes ? !!savedFilters.modes[mode] : true;
+
+            button.classList.toggle("is-active", active);
+            button.setAttribute("aria-pressed", active ? "true" : "false");
+          });
+        }
+      }
+    } catch (e) {}
+
+    function saveFilters() {
+      const state = {
+        tags: {},
+        modes: {},
+      };
+
+      tagFilterBoxes.forEach((box) => {
+        state.tags[box.dataset.key] = box.checked;
+      });
+
+      modeButtons.forEach((button) => {
+        state.modes[button.dataset.mode] =
+          button.classList.contains("is-active");
+      });
+
+      try {
+        localStorage.setItem(FILTER_KEY, JSON.stringify(state));
+      } catch (e) {}
+    }
+
+    function applyLogFilters() {
+      const rows = Array.from(document.querySelectorAll(".logs-ledger .row"));
+      if (!rows.length) return;
+
+      const checkedTags = tagFilterBoxes
+        .filter((cb) => cb.checked)
+        .map((cb) => cb.dataset.key);
+
+      const activeModes = modeButtons
+        .filter((button) => button.classList.contains("is-active"))
+        .map((button) => button.dataset.mode);
+
+      rows.forEach((row) => {
+        const tags = (row.dataset.tags || "").split(/\s+/).filter(Boolean);
+        const modes = (row.dataset.modes || "").split(/\s+/).filter(Boolean);
+
+        const tagMatch =
+          checkedTags.length > 0 && checkedTags.some((t) => tags.includes(t));
+
+        const modeMatch =
+          activeModes.length === 0 ||
+          activeModes.some((m) => modes.includes(m));
+
+        row.hidden = !(tagMatch && modeMatch);
+      });
+
+      const monthRows = document.querySelectorAll(".month-row");
+
+      monthRows.forEach((month) => {
+        let next = month.nextElementSibling;
+        let visible = false;
+
+        while (next && !next.classList.contains("month-row")) {
+          if (!next.hidden) {
+            visible = true;
+            break;
+          }
+          next = next.nextElementSibling;
+        }
+
+        month.hidden = !visible;
       });
     }
-  } catch (e) {}
 
-  function saveFilters() {
-    const state = {};
-    filterBoxes.forEach((box) => {
-      state[box.dataset.key] = box.checked;
-    });
-    try {
-      localStorage.setItem(FILTER_KEY, JSON.stringify(state));
-    } catch (e) {}
-  }
-
-  function applyLogFilters() {
-    const rows = Array.from(document.querySelectorAll(".logs-ledger .row"));
-    if (!rows.length) return;
-
-    const modeKeys = new Set(["core", "slice", "ambient", "checkpoint", "crux", "misc"]);
-
-    const checkedTags = filterBoxes
-      .filter(cb => cb.checked && !modeKeys.has(cb.dataset.key))
-      .map(cb => cb.dataset.key);
-
-    const checkedModes = filterBoxes
-      .filter(cb => cb.checked && modeKeys.has(cb.dataset.key))
-      .map(cb => cb.dataset.key);
-
-    rows.forEach((row) => {
-      const tags = (row.dataset.tags || "").split(/\s+/).filter(Boolean);
-      const modes = (row.dataset.modes || "").split(/\s+/).filter(Boolean);
-
-      const tagMatch =
-        checkedTags.length === 0 || checkedTags.some(t => tags.includes(t));
-
-      const modeMatch =
-        checkedModes.length === 0 || checkedModes.some(m => modes.includes(m));
-
-      row.hidden = !(tagMatch && modeMatch);
+    tagFilterBoxes.forEach((box) => {
+      box.addEventListener("change", () => {
+        saveFilters();
+        applyLogFilters();
+      });
     });
 
-    const monthRows = document.querySelectorAll(".month-row");
+    modeButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const active = !button.classList.contains("is-active");
+        button.classList.toggle("is-active", active);
+        button.setAttribute("aria-pressed", active ? "true" : "false");
 
-    monthRows.forEach((month) => {
-      let next = month.nextElementSibling;
-      let visible = false;
+        saveFilters();
+        applyLogFilters();
+      });
+    });
 
-      while (next && !next.classList.contains("month-row")) {
-        if (!next.hidden) {
-          visible = true;
-          break;
+    const filterActionButtons = document.querySelectorAll("[data-filter-action]");
+
+    filterActionButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const action = button.dataset.filterAction;
+
+        if (action === "all") {
+          setAllTagFilters(true);
+        } else if (action === "none") {
+          setAllTagFilters(false);
+        } else if (action === "default") {
+          restoreDefaultTagFilters();
+          restoreDefaultModes();
+        } else {
+          return;
         }
-        next = next.nextElementSibling;
-      }
 
-      month.hidden = !visible;
+        saveFilters();
+        applyLogFilters();
+      });
     });
+
+    applyLogFilters();
   }
-
-  filterBoxes.forEach((box) => {
-    box.addEventListener("change", () => {
-      saveFilters();
-      applyLogFilters();
-    });
-  });
-
-  applyLogFilters();
-}  
-
+  
   // LATEST POST EXPAND/COLLAPSE (HOME)
   const latestBody = document.getElementById("latestBody");
   

@@ -722,6 +722,75 @@ button:hover {
 .logs-entry-title {
   font-weight: 500;
 }
+
+.logs-filter-bar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.logs-filter-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.logs-filter-actions {
+  display: flex;
+  gap: 0.35rem;
+  margin-left: auto;
+  align-self: flex-start;
+  opacity: 0.8;
+}
+
+.filter-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+
+  border: 1px solid rgba(255,255,255,0.25);
+  background: transparent;
+  color: inherit;
+
+  font-size: 0.85rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.filter-action:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+.filter-action:active {
+  background: rgba(255,255,255,0.14);
+}
+
+.mode-toggle {
+  cursor: pointer;
+  user-select: none;
+  opacity: 0.55;
+  transition: opacity 0.15s ease, background 0.15s ease;
+}
+
+.mode-toggle.is-active {
+  opacity: 1;
+  background: rgba(255,255,255,0.18);
+  border-color: rgba(255,255,255,0.35);
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.35);
+}
+
+.mode-toggle[aria-pressed="false"] {
+  background: transparent;
+  box-shadow: none;
+}
+
 /* =========================
    LOGS LEDGER (index page)
    ========================= */

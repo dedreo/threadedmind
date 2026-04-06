@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Updates</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/styles/main.css" />
+    <script defer src="https://threadedminds-umami.fly.dev/script.js" data-website-id="dcd76c73-ec69-4e45-8ca3-22ae7798086b"></script>
+    <script src="/scripts/main.js" defer></script>
+    <script src="/scripts/reading-progress.js" defer></script>
+
+  </head>
+  <body>
+<header class="top-bar site-header">
+  <a href="/" class="site-home-link">
+    <div class="logo-box">
+      <span>Logo?</span>
+  </div>
+  <div class="title-block">
+    <div class="title-row">
+      <div>
+        <h1>My chat with mychat</h1>
+        <div class="subtitle">a personal archive of human–AI conversations</div>
+      </div>
+</a>
+      <div class="header-actions">
+        <div class="theme-switcher">
+          <span>Theme</span>
+          <select id="themeSelect" aria-label="Choose theme">
+            <option value="dark">Dark</option>
+            <option value="light">Light</option>
+            <option value="terminal">Terminal</option>
+          </select>
+        </div>
+
+        <nav class="global-entry-nav">
+          <a href="/logs/" class="back-to-logs">← Back to logs</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+        <div class="layout">
+          <div id="tmSidebar"></div>
+          <div class="main-column">
+
+<!-- PAGE_CONTENT_START --><section class="updates-page">
+  <h1>Updates</h1>
+
+  <section class="update-block">
+    <h2>2026-03-30</h2>
+    <ul>
+      <li>Added dynamic tag filtering to the logs index.</li>
+      <li>Added featured-entry selection during publish.</li>
+      <li>Restored tag chips on the logs page.</li>
+    </ul>
+    <p>Side note: weird tags like <code>#sly</code> now show up automatically if they exist in the published set.</p>
+  </section>
+
+  <section class="update-block">
+    <h2>2026-03-27</h2>
+    <ul>
+      <li>Fixed sticky sidebar behavior on entry pages.</li>
+      <li>Constrained reading width for better long-form readability.</li>
+      <li>Initial logs index filter UI.</li>
+      <li>Added mode filters (core / slice / ambient / checkpoint / crux).</li>
+    </ul>
+  </section>
+</section><!-- PAGE_CONTENT_END -->
+            <div class="footer-note">
+              Filters &amp; theme are remembered locally in your browser only.
+              <button id="clearLocal" class="clear-local" type="button">Clear local data</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
